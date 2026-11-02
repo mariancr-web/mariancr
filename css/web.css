@@ -31,7 +31,7 @@
 .curso-fila__s{color:var(--gris-web);font-size:14px;margin-top:2px}
 .curso-fila__der{display:flex;gap:6px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
 .chip-temas{font:700 13px var(--font-marca);height:28px;padding:0 10px;display:inline-flex;align-items:center;border-radius:4px;background:var(--acento);color:var(--sobre-acento)}
-.flecha{width:10px;height:10px;border-right:2px solid var(--gris-web);border-bottom:2px solid var(--gris-web);transform:rotate(45deg);margin:0 4px 4px 10px;transition:transform .15s}
+.curso-fila .flecha{width:10px;height:10px;border-right:2px solid var(--gris-web);border-bottom:2px solid var(--gris-web);transform:rotate(45deg);margin:0 4px 4px 10px;transition:transform .15s}
 .curso-fila[open] .flecha{transform:rotate(-135deg);margin-bottom:-4px}
 .lista-temas{list-style:none;margin:0;padding:6px 64px 10px 78px;background:var(--papel);border:1px solid var(--borde-web);border-top:0;border-radius:0 0 6px 6px}
 .lista-temas li{border-bottom:1px solid var(--borde-web)}
