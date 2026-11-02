@@ -2,7 +2,7 @@
   "recursos": [
     { "nombre": "Actividades", "url": "https://mariancr-actividades.vercel.app/" },
     { "nombre": "Clase en directo", "url": "https://mariancr-directo.vercel.app/" },
-    { "nombre": "Test", "url": "https://mariancr-test.vercel.app/hacer.html" },
+    { "nombre": "Test", "url": "https://mariancr-test.vercel.app/" },
     { "nombre": "Muro", "url": "https://mariancr-muro.vercel.app/" }
   ],
   "cursos": [
