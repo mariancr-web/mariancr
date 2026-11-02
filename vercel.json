@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/:curso((?:1eso|2eso|4eso|1bach|2bach)-[a-z]+)/:tema(t\\d{2})/libro", "destination": "/libro.html" },
+    { "source": "/:curso((?:1eso|2eso|4eso|1bach|2bach)-[a-z]+)/:tema(t\\d{2})", "destination": "/tema.html" }
+  ],
+  "headers": [
+    { "source": "/datos/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }] },
+    { "source": "/temas/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }] }
+  ]
+}

@@ -1,0 +1,339 @@
+/* mariancr · plantillas impresas (apuntes, cuaderno, solucionario, resumen). A4, Chromium + Paged.js.
+   Valores en marca/tokens.css (generado de tokens.json). Regla: el color identifica el CURSO; el tema va por número y pestaña. */
+/* Curso: acento, texto, suave, sobre-acento y trama (copiado de marca/bundle.css). */
+.mcr { --acento: var(--acento-general); --texto: var(--texto-general); --suave: var(--suave-general); --sobre-acento: var(--sobre-acento-general); }
+.curso-general { --acento: var(--acento-general); --texto: var(--texto-general); --suave: var(--suave-general); --sobre-acento: var(--sobre-acento-general); }
+.curso-1eso { --acento: var(--acento-1eso); --texto: var(--texto-1eso); --suave: var(--suave-1eso); --sobre-acento: var(--sobre-acento-1eso); --trama-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20' fill='none'%3E%3Cpath d='M0 .5H20M.5 0V20' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E"); --trama-size: 20px 20px; }
+.curso-2eso { --acento: var(--acento-2eso); --texto: var(--texto-2eso); --suave: var(--suave-2eso); --sobre-acento: var(--sobre-acento-2eso); --trama-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16' fill='none'%3E%3Ccircle cx='8' cy='8' r='1.3' fill='%23000'/%3E%3C/svg%3E"); --trama-size: 16px 16px; }
+.curso-4eso { --acento: var(--acento-4eso); --texto: var(--texto-4eso); --suave: var(--suave-4eso); --sobre-acento: var(--sobre-acento-4eso); --trama-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 34.641' width='20' height='34.641' fill='none'%3E%3Cpath d='M0 0 20 34.641M20 0 0 34.641M0 .4H20M0 17.32H20' stroke='%23000' stroke-width='.8'/%3E%3C/svg%3E"); --trama-size: 20px 34.641px; }
+.curso-1bach { --acento: var(--acento-1bach); --texto: var(--texto-1bach); --suave: var(--suave-1bach); --sobre-acento: var(--sobre-acento-1bach); --trama-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 24' width='8' height='24' fill='none'%3E%3Cpath d='M0 23.5H8' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E"); --trama-size: 8px 24px; }
+.curso-2bach { --acento: var(--acento-2bach); --texto: var(--texto-2bach); --suave: var(--suave-2bach); --sobre-acento: var(--sobre-acento-2bach); --trama-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='40' height='40' fill='none'%3E%3Cpath d='M4 0V40M8 0V40M12 0V40M16 0V40M20 0V40M24 0V40M28 0V40M32 0V40M36 0V40M0 4H40M0 8H40M0 12H40M0 16H40M0 20H40M0 24H40M0 28H40M0 32H40M0 36H40' stroke='%23000' stroke-width='.5' stroke-opacity='.5'/%3E%3Cpath d='M.5 0V40M0 .5H40' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E"); --trama-size: 40px 40px; }
+
+/* ========== Página A4 ========== */
+@page { size: A4; margin: 22mm 18mm 20mm 18mm; }
+@page portada { margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; }
+.mcr { font-family: var(--font-cuerpo); color: var(--tinta); background: var(--papel); -webkit-font-smoothing: antialiased; }
+.mcr *, .mcr *::before, .mcr *::after { box-sizing: border-box; }
+
+/* Densidad: ESO amplio, Bach compacto */
+.eso  { --cuerpo: 12pt;   --interlinea: 19.5pt; --h1: 24pt; --h2: 17pt; --h3: 13pt;   --pad: 4.5mm; --hueco: 4mm;   --trama-op: var(--trama-eso); }
+.bach { --cuerpo: 10.5pt; --interlinea: 15.75pt; --h1: 20pt; --h2: 14pt; --h3: 11.5pt; --pad: 3mm;   --hueco: 2.8mm; --trama-op: var(--trama-bach); }
+.mcr { font-size: var(--cuerpo); line-height: var(--interlinea); }
+.bach .cuerpo p, .bach .cuerpo li { text-align: justify; hyphens: auto; }
+.bach .cuerpo .mcr-caja li, .bach .cuerpo .nodo li, .tipo-resumen.bach .cuerpo li { text-align: left; }
+.mcr p { margin: 0 0 var(--hueco); orphans: 2; widows: 2; }
+.mcr ul, .mcr ol { margin: 0 0 var(--hueco); padding-left: 6mm; }
+.mcr li { margin: 0 0 1mm; }
+.mcr ul li::marker { color: var(--acento); }
+.mcr ol li::marker { font-family: var(--font-marca); font-weight: 700; color: var(--texto); }
+.mcr strong { font-weight: 700; }
+.mcr a { color: var(--texto); text-decoration: none; }
+.mcr sub, .mcr sup { font-size: .7em; line-height: 0; }
+.mcr math { font-family: var(--font-formulas); font-size: 1.05em; }
+
+/* Trama: máscara SVG. Sobre papel en `trama`; sobre el acento, en blanco */
+.mcr-trama { position: relative; isolation: isolate; }
+.mcr-trama::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: var(--trama); opacity: var(--trama-op);
+  -webkit-mask: var(--trama-img) repeat 0 0 / var(--trama-size); mask: var(--trama-img) repeat 0 0 / var(--trama-size); }
+.mcr-bloque-acento { background: var(--acento); color: #FFFFFF; }
+.mcr-bloque-acento.mcr-trama::before { background: #FFFFFF; opacity: var(--trama-sobre-acento); }
+
+/* Etiquetas y distintivo */
+.mcr-etiqueta { font-family: var(--font-marca); font-size: 8pt; line-height: 1.2; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.mcr-distintivo { display: inline-flex; align-self: flex-start; font-family: var(--font-marca); font-weight: 700; font-size: 10pt; letter-spacing: .1em; text-transform: uppercase; color: var(--texto); border: 2px solid var(--acento); padding: 1mm 3mm; }
+
+/* ========== Portada de tema (apuntes y cuaderno) ========== */
+.portada { page: portada; height: 297mm; display: grid; grid-template-rows: 1fr 1fr; break-after: page; }
+.portada__sup { padding: 20mm 20mm 10mm; display: flex; flex-direction: column; gap: 5mm; }
+.portada__logo { height: 14mm; width: auto; align-self: flex-start; margin-bottom: auto; }
+.portada__meta { display: flex; align-items: center; gap: 2.5mm; color: var(--tinta-suave); font-size: 9pt; }
+.portada__icono { width: 6mm; height: 6mm; }
+.portada__titulo { font-family: var(--font-titulos); font-weight: 600; font-variation-settings: "opsz" 144; font-size: 42pt; line-height: 1.04; margin: 0; text-wrap: balance; }
+.portada__sub { font-size: 13pt; line-height: 1.4; color: var(--tinta-suave); margin: 0; max-width: 140mm; }
+.portada__tipo { color: var(--tinta-suave); margin: 2mm 0 0; }
+.portada__inf { display: flex; align-items: flex-end; justify-content: space-between; padding: 0 14mm 6mm 20mm; }
+.portada__num { font-family: var(--font-marca); font-weight: 700; font-size: 230pt; line-height: .78; letter-spacing: -.02em; color: #FFFFFF; }
+.portada__centro { font-family: var(--font-marca); font-weight: 600; font-size: 9pt; letter-spacing: .08em; text-transform: uppercase; color: #FFFFFF; padding-bottom: 4mm; }
+
+/* ========== Cabecera de documento (resumen y solucionario: sin portada) ========== */
+.cabecera-doc { margin-bottom: 7mm; break-after: avoid; }
+.cabecera-doc__fila { display: flex; align-items: center; gap: 4mm; }
+.cabecera-doc__meta { color: var(--tinta-suave); }
+.cabecera-doc__logo { height: 8mm; margin-left: auto; }
+.cabecera-doc__titulo { font-family: var(--font-titulos); font-weight: 600; font-variation-settings: "opsz" 72; font-size: 26pt; line-height: 1.1; margin: 5mm 0 4mm; }
+.bach .cabecera-doc__titulo { font-size: 22pt; }
+.cabecera-doc__franja { height: 7mm; }
+.bach .cabecera-doc__franja { height: 4mm; }
+
+/* ========== Elementos de cada página (los añade paginas.js) ========== */
+.pagedjs_sheet { position: relative; }
+.mcr-cabecera-viva { position: absolute; top: 10mm; left: 18mm; right: 18mm; display: flex; align-items: center; gap: 3mm; padding-bottom: 1.6mm; border-bottom: 1px solid var(--linea);
+  font-family: var(--font-marca); font-weight: 600; font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-suave); }
+.mcr-cabecera-viva__curso { display: inline-flex; align-items: center; gap: 1.6mm; color: var(--texto); }
+.mcr-cabecera-viva__curso::before { content: ""; width: 2.6mm; height: 2.6mm; background: var(--acento); }
+.mcr-cabecera-viva .sec { color: var(--tinta); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90mm; }
+.mcr-cabecera-viva__tipo { margin-left: auto; }
+.mcr-pie-pagina { position: absolute; bottom: 8mm; left: 18mm; right: 18mm; display: flex; align-items: center; justify-content: space-between; }
+.mcr-pie-pagina img { height: 7mm; }
+.mcr-pie-pagina .pag { font-family: var(--font-marca); font-weight: 700; font-size: 10pt; color: var(--tinta); font-variant-numeric: tabular-nums; }
+.mcr-pestana { position: absolute; right: 0; width: 8mm; height: 34mm; top: calc(30mm + var(--pos) * 40mm + var(--vuelta) * 20mm);
+  background: var(--acento); color: var(--sobre-acento); display: grid; place-items: center;
+  font-family: var(--font-marca); font-weight: 700; font-size: 13pt; }
+
+/* ========== Índice y apertura ========== */
+.zona-tit { font-family: var(--font-titulos); font-weight: 600; font-variation-settings: "opsz" 72; font-size: 22pt; line-height: 1.1; margin: 0 0 6mm; }
+.indice { break-after: page; }
+.mcr-indice { list-style: none; margin: 0; padding: 0; }
+.mcr-indice li { margin: 0; }
+.mcr-indice li.n1 { display: grid; grid-template-columns: 9mm 1fr auto auto; align-items: baseline; column-gap: 2mm; padding: 2.4mm 0; border-top: 1px solid var(--linea); }
+.mcr-indice li.n1 > .mcr-indice__titulo { font-family: var(--font-titulos); font-weight: 600; font-size: 13pt; color: var(--tinta); }
+.mcr-indice li.n1 > ol { grid-column: 2 / -1; list-style: none; padding: 0; margin: 1.2mm 0 0; }
+.mcr-indice li.n2 { display: grid; grid-template-columns: 10mm 1fr auto auto; align-items: baseline; column-gap: 2mm; font-size: .92em; color: var(--tinta-suave); }
+.mcr-indice li.n2 .mcr-indice__titulo { color: var(--tinta-suave); }
+.mcr-indice__num { font-family: var(--font-marca); font-weight: 700; color: var(--texto); font-variant-numeric: tabular-nums; }
+.mcr-indice__guia { border-bottom: 1.5px dotted var(--linea); min-width: 10mm; transform: translateY(-1mm); }
+.mcr-indice__pag { font-family: var(--font-marca); font-weight: 600; color: var(--tinta); font-variant-numeric: tabular-nums; min-width: 6mm; text-align: right; }
+.mcr-indice__pag::after { content: target-counter(attr(href url), page); }
+.mcr-indice li.n1 > .mcr-indice__guia { grid-column: 3; }
+.apertura { margin: 0 0 8mm; padding: var(--pad); background: var(--papel-alto); break-inside: avoid; }
+.apertura .zona-tit { font-size: 15pt; margin-bottom: 3mm; }
+.apertura ul { margin: 0; }
+.indice .apertura { margin-top: 10mm; }
+
+/* ========== Cuerpo: títulos ========== */
+.cuerpo h1, .cuerpo h2, .cuerpo h3 { font-family: var(--font-titulos); font-weight: 600; margin: 0; break-after: avoid; text-wrap: balance; }
+.cuerpo h1 { font-variation-settings: "opsz" 72; font-size: var(--h1); line-height: 1.15; color: var(--tinta); margin: 8mm 0 4mm; padding-bottom: 2mm; border-bottom: 2px solid var(--acento); }
+.cuerpo h1 .num { font-family: var(--font-marca); font-weight: 700; color: var(--texto); margin-right: 2.5mm; }
+.cuerpo h1.nueva { break-before: page; margin-top: 0; }
+.cuerpo h2 { font-variation-settings: "opsz" 36; font-size: var(--h2); line-height: 1.25; color: var(--texto); margin: 6mm 0 2.5mm; }
+.cuerpo h2 .num { font-family: var(--font-marca); font-weight: 700; font-size: .8em; margin-right: 2mm; }
+.cuerpo h3 { font-weight: 500; font-variation-settings: "opsz" 18; font-size: var(--h3); line-height: 1.3; color: var(--tinta); margin: 4mm 0 1.5mm; }
+.cuerpo > h1:first-child { margin-top: 0; }
+
+/* Apuntes: columna principal + margen exterior para notas */
+.tipo-apuntes .cuerpo { padding-right: 40mm; }
+.tipo-apuntes .cuerpo h1 { margin-right: -40mm; }
+.mcr-nota { display: table; float: right; clear: right; width: 34mm; margin: 0 -40mm 3mm 6mm; padding-top: 1.6mm; border-top: 2px solid var(--acento);
+  font-size: 8.5pt; line-height: 1.35; color: var(--tinta); text-align: left !important; hyphens: manual; break-inside: avoid; }
+.mcr-nota p { margin: 0 0 1mm; text-align: left !important; }
+.mcr-nota .mcr-etiqueta { display: block; color: var(--texto); margin-bottom: 1mm; }
+.tipo-cuaderno .mcr-nota, .tipo-resumen .mcr-nota, .tipo-solucionario .mcr-nota { float: none; width: auto; margin: 0 0 var(--hueco); padding: 2mm 3mm; border-top: 0; border-left: 2px solid var(--acento); }
+
+/* ========== Cajas ========== */
+.mcr-caja { display: flex; flex-direction: column; gap: 1.5mm; padding: var(--pad); margin: 0 0 var(--hueco); break-inside: avoid; }
+.mcr-caja > :last-child, .mcr-caja p:last-child, .mcr-caja ul:last-child, .mcr-caja ol:last-child { margin-bottom: 0; }
+.mcr-caja__etiqueta { display: flex; align-items: center; gap: 2mm; }
+.mcr-caja__termino { font-weight: 700; margin: 0 !important; }
+.mcr-caja--definicion { background: var(--suave); border-left: var(--stroke-filete) solid var(--acento); }
+.mcr-caja--definicion .mcr-caja__etiqueta { color: var(--texto); }
+.mcr-caja--ejemplo { background: var(--papel-alto); }
+.mcr-caja--ejemplo .mcr-caja__etiqueta { color: var(--texto); }
+.mcr-caja--ejemplo ol { padding-left: 0; list-style: none; counter-reset: paso; }
+.mcr-caja--ejemplo ol > li { counter-increment: paso; position: relative; padding-left: 6mm; }
+.mcr-caja--ejemplo ol > li::before { content: counter(paso) "."; position: absolute; left: 0; font-family: var(--font-marca); font-weight: 700; color: var(--texto); }
+.mcr-resultado { font-family: var(--font-marca); font-weight: 700; border-top: 1px solid var(--linea); padding-top: 1.5mm; }
+.mcr-resultado p { margin: 0; }
+.mcr-caja--atencion { border: var(--stroke-marco) solid var(--tinta); background: var(--papel); }
+.mcr-caja--atencion .mcr-caja__etiqueta { color: var(--tinta); }
+.mcr-caja--atencion svg { width: 4.5mm; height: 4.5mm; flex: none; }
+
+/* ========== Ejercicios ========== */
+.practica { margin: 6mm 0 var(--hueco); }
+.practica__tit { display: flex; align-items: center; gap: 3mm; color: var(--texto); margin-bottom: 3mm; break-after: avoid; }
+.practica__tit::after { content: ""; flex: 1; border-top: 1px solid var(--acento); }
+.mcr-ejercicio { display: grid; grid-template-columns: auto 1fr; gap: 1.5mm 3mm; align-items: start; margin: 0 0 calc(var(--hueco) * 1.3); break-inside: avoid; }
+.mcr-ejercicio__num { font-family: var(--font-marca); font-weight: 700; font-size: .92em; background: var(--tinta); color: var(--papel); min-width: 7mm; padding: .4mm 1.5mm; text-align: center; line-height: 1.45; }
+.mcr-ejercicio__cuerpo { display: grid; gap: 1.5mm; min-width: 0; }
+.mcr-ejercicio__cuerpo p:last-child, .mcr-ejercicio__cuerpo ol:last-child, .mcr-ejercicio__cuerpo ul:last-child { margin-bottom: 0; }
+.mcr-ejercicio__cab { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5mm 3mm; color: var(--tinta-suave); }
+.mcr-ejercicio__cab .origen { font-size: .85em; font-style: italic; }
+.mcr-ejercicio ol { list-style: lower-alpha; }
+.mcr-ejercicio ol > li::marker { content: counter(list-item, lower-alpha) ") "; }
+.mcr-nivel { display: inline-flex; gap: 1mm; align-items: center; }
+.mcr-nivel i { width: 2.4mm; height: 2.4mm; border-radius: 999px; border: 1.3px solid var(--texto); }
+.mcr-nivel i.on { background: var(--texto); }
+.mcr-chip { font-family: var(--font-marca); font-weight: 600; font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--texto); color: var(--texto); padding: .2mm 1.6mm; border-radius: var(--radius-1); }
+.mcr-ejercicio__cab .puntos { color: var(--tinta); }
+.respuesta { height: calc(var(--lineas) * 8mm); border: 1px solid var(--linea); --trama-op: .45; }
+.solucion { border-left: 2px solid var(--acento); padding: 1mm 0 1mm 3.5mm; }
+.solucion > .mcr-etiqueta { display: block; color: var(--texto); margin-bottom: 1mm; }
+.solucion p:last-child { margin-bottom: 0; }
+/* Qué se ve en cada documento */
+.tipo-apuntes .solucion, .tipo-cuaderno .solucion, .tipo-resumen .solucion { display: none; }
+.tipo-solucionario .respuesta, .tipo-apuntes .respuesta { display: none; }
+.tipo-solucionario .enunciado { color: var(--tinta-suave); font-size: .92em; }
+.bach .respuesta { display: none; }
+
+/* ========== Tablas y figuras ========== */
+.mcr-tabla { border-collapse: collapse; width: 100%; margin: 1mm 0 calc(var(--hueco) + 1mm); font-variant-numeric: tabular-nums; font-size: .92em; line-height: 1.35; break-inside: avoid; }
+.mcr-tabla caption { caption-side: top; text-align: left; font-family: var(--font-marca); font-weight: 600; font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: var(--texto); padding-bottom: 1.5mm; }
+.mcr-tabla th { font-family: var(--font-marca); font-size: 7.5pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; text-align: left; color: var(--tinta-suave); border-bottom: var(--stroke-marco) solid var(--tinta); padding: 1.6mm 2.5mm; vertical-align: bottom; }
+.mcr-tabla td { border-bottom: 1px solid var(--linea); padding: 1.6mm 2.5mm; vertical-align: top; }
+.mcr-tabla thead { display: table-header-group; }
+figure { margin: 2mm 0 calc(var(--hueco) + 1mm); text-align: center; break-inside: avoid; }
+figure img, figure svg { max-width: 100%; height: auto; }
+figcaption { font-family: var(--font-marca); font-size: 8pt; line-height: 1.35; color: var(--tinta-suave); margin-top: 1.5mm; }
+.dos-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; align-items: start; }
+
+/* Ecuaciones químicas: flecha con condiciones encima y debajo */
+.rx { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.5mm 2.5mm; margin: 1mm 0 var(--hueco); break-inside: avoid; }
+.flecha { display: inline-grid; grid-template-rows: auto auto auto; justify-items: center; min-width: 14mm; line-height: 1; vertical-align: middle; }
+.flecha .sobre, .flecha .bajo { font-size: .7em; color: var(--tinta-suave); padding: 0 1.5mm; white-space: nowrap; }
+.flecha .linea { width: 100%; height: 1.3px; background: var(--tinta); position: relative; margin: 1mm 0; }
+.flecha .linea::after { content: ""; position: absolute; right: -1px; top: -3.3px; border-left: 7px solid var(--tinta); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+.flecha.eq .linea { height: 8px; background: transparent; border-top: 1.3px solid var(--tinta); border-bottom: 1.3px solid var(--tinta); margin: .6mm 0; }
+.flecha.eq .linea::after { right: -1px; top: -5.5px; border-left: 7px solid var(--tinta); border-top: 4.5px solid transparent; border-bottom: 0; }
+.flecha.eq .linea::before { content: ""; position: absolute; left: -1px; bottom: -5.5px; border-right: 7px solid var(--tinta); border-bottom: 4.5px solid transparent; border-top: 0; }
+
+/* ========== Resumen ========== */
+.tipo-resumen.bach { --cuerpo: 9.5pt; --interlinea: 13.5pt; --h1: 13.5pt; --h2: 11pt; --h3: 10pt; --pad: 2.2mm; --hueco: 1.8mm; }
+.tipo-resumen.bach .cuerpo { columns: 2; column-gap: 7mm; column-fill: auto; }
+.junto { break-inside: avoid; }
+.tipo-resumen.bach .cuerpo .junto:first-child h1 { margin-top: 0; }
+.tipo-resumen.bach .cuerpo h1 { margin: 3.5mm 0 2mm; padding-bottom: 1mm; border-bottom-width: 1.5px; }
+.tipo-resumen.bach .cuerpo > h1:first-child { margin-top: 0; }
+.tipo-resumen.bach .cuerpo h2 { margin: 2.5mm 0 1mm; }
+.tipo-resumen .mcr-caja, .tipo-resumen .mcr-tabla, .tipo-resumen figure { break-inside: avoid; }
+.tipo-resumen.eso { --cuerpo: 10.5pt; --interlinea: 14pt; --pad: 3mm; --hueco: 2mm; }
+.mapa { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; position: relative; }
+.mapa > .nodo--central { grid-column: 1 / -1; justify-self: center; text-align: center; max-width: 120mm; background: var(--acento); color: #FFFFFF; border: 0; padding: 4mm 7mm; }
+.mapa > .nodo--central .nodo__tit { color: #FFFFFF; font-size: 15pt; }
+.curso-1eso .mapa > .nodo--central, .curso-4eso .mapa > .nodo--central, .curso-1bach .mapa > .nodo--central { color: var(--sobre-acento); }
+.curso-1eso .mapa > .nodo--central .nodo__tit, .curso-4eso .mapa > .nodo--central .nodo__tit, .curso-1bach .mapa > .nodo--central .nodo__tit { color: var(--sobre-acento); }
+.nodo { border: 1px solid var(--linea); border-top: 3px solid var(--acento); padding: 3mm 3.5mm; break-inside: avoid; background: var(--papel); }
+.nodo__tit { font-family: var(--font-titulos); font-weight: 600; font-size: 12pt; line-height: 1.2; color: var(--texto); margin-bottom: 1.5mm; }
+.nodo p:last-child, .nodo ul:last-child { margin-bottom: 0; }
+.nodo ul { padding-left: 4.5mm; }
+.nodo--ancho { grid-column: 1 / -1; }
+
+/* ========== Química (componentes del T1 de 2.º Bach; sirven para cualquier tema) ========== */
+.fq { white-space: nowrap; }
+.mcr-tabla td.fila, .mcr-tabla th[scope=row] { font-weight: 600; color: var(--tinta); background: var(--papel-alto); }
+.mcr-tabla .c { text-align: center; }
+.mcr-tabla td { vertical-align: middle; }
+.mcr-tabla tr { break-inside: avoid; }
+.mcr-tabla img, .mcr-tabla svg { max-width: 100%; height: auto; vertical-align: middle; }
+.mcr-tabla td svg { width: auto; max-height: 19mm; }
+.mcr-tabla td.g svg { max-height: 26mm; }
+.mcr-tabla.junta { break-inside: avoid; }
+.tabla-tit { font-family: var(--font-marca); font-weight: 600; font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: var(--texto); margin: 3mm 0 1.5mm; break-after: avoid; }
+.flecha.no .linea { background: none; border-top: 0; font-size: 8pt; line-height: 1; color: var(--texto); }
+.flecha.no .linea::after { display: none; }
+.ramas { display: inline-grid; gap: 2mm; }
+.ramas small { color: var(--tinta-suave); font-size: 8pt; margin-left: 1.5mm; }
+.condic { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--linea); border-top: 2px solid var(--acento); margin: 1.5mm 0 2.5mm; font-size: .93em; break-inside: avoid; break-after: avoid; }
+.condic > div { padding: 1.4mm 2.2mm; border-right: 1px solid var(--linea); }
+.condic > div:last-child { border-right: 0; }
+.condic > div > span:first-child { display: block; font-family: var(--font-marca); font-weight: 600; font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--texto); margin-bottom: .6mm; }
+.fila-fig { display: flex; justify-content: center; align-items: end; gap: 8mm; flex-wrap: wrap; break-inside: avoid; }
+.fila-fig > div { text-align: center; font-size: 9pt; break-inside: avoid; }
+.fila-fig > div small { display: block; color: var(--tinta-suave); }
+.fila-fig svg { max-height: 30mm; width: auto; height: auto; }
+li:has(> .fila-fig) { break-inside: avoid; }
+.dos-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; align-items: start; }
+.lado { display: grid; grid-template-columns: 1fr auto; gap: 6mm; align-items: center; }
+.cols2 { columns: 2; column-gap: 8mm; }
+.cols2 li { break-inside: avoid; }
+.orb { display: inline-flex; align-items: end; gap: 3mm; }
+.orb .g { display: grid; justify-items: center; gap: 1mm; font-weight: 600; font-size: 9pt; line-height: 1; }
+.orb .cajas { display: flex; }
+.orb .cajas i { width: 7mm; height: 7mm; border: 1.2px solid var(--tinta); margin-left: -1.2px; display: grid; place-items: center; font-style: normal; font-size: 11pt; line-height: 1; }
+.orb .cajas i.on { background: var(--suave); }
+.enlace-web { font-family: var(--font-marca); font-weight: 600; font-size: 9pt; color: var(--texto); overflow-wrap: anywhere; hyphens: none; }
+a.enlace-web { overflow-wrap: normal; text-decoration: none; }
+.mcr-caja__termino { font-weight: 700; color: var(--texto); }
+.mcr-ejercicio ol[type=a] { list-style: lower-alpha; }
+.mcr-ejercicio ol { padding-left: 6mm; margin: .5mm 0 0; }
+.lista { padding-left: 5mm; }
+.mcr-tabla.larga { break-inside: auto; }
+.tipo-apuntes .cuerpo > .mcr-tabla.ancha { width: calc(100% + 40mm); }
+.tipo-apuntes .cuerpo > .mcr-caja:has(.mcr-tabla.ancha), .tipo-apuntes .cuerpo > .practica, .tipo-apuntes .cuerpo > figure.ancha, .tipo-apuntes .cuerpo > .dos-col { margin-right: -40mm; }
+.mcr-nota { break-inside: avoid; }
+/* columnas: 1 en el YAML → resumen a una columna (temas con tablas anchas) */
+.tipo-resumen.bach.una-col .cuerpo { columns: auto; }
+.mcr-ejercicio:has(.larga) { break-inside: auto; }
+
+/* ========== Teoría para completar (tablas en blanco; reacciones en páginas apaisadas) ========== */
+/* Las páginas apaisadas van en un Markdown aparte (apaisada: true, parte: 2) y se unen al PDF después */
+.apaisada + .apaisada { break-before: page; }
+.tipo-teoria .cuerpo h1:first-child { margin-top: 0; }
+table.hueco td { height: 24mm; background: var(--papel); }
+table.hueco td.fila { width: 22mm; background: var(--papel-alto); }
+table.hueco.alto td { height: 46mm; }
+table.hueco th.c, table.hueco td.c { text-align: center; }
+.mcr-tabla.hueco td, .mcr-tabla.rx-hueco td { border: 1px solid var(--linea); }
+.mcr-tabla.hueco th, .mcr-tabla.rx-hueco th { border-bottom-color: var(--acento); }
+.renglones { height: var(--h, 22mm); margin: 1mm 0 3mm; background-image: linear-gradient(to bottom, transparent calc(100% - 0.8px), var(--linea) calc(100% - 0.8px)); background-size: 100% 8mm; background-repeat: repeat-y; }
+.arbol > * { min-width: 0; }
+.arbol { display: grid; grid-template-columns: 3fr 2fr; gap: 8mm; margin: 2mm 0 6mm; text-align: center; }
+.arbol .raiz { grid-column: 1 / -1; justify-self: center; border: 1.5px solid var(--acento); padding: 1.2mm 8mm; font-family: var(--font-marca); font-weight: 600; font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: var(--texto); }
+.arbol .rama > div:first-child { background: var(--suave); border-bottom: 2px solid var(--acento); padding: 1.4mm; font-family: var(--font-marca); font-weight: 600; font-size: 8pt; letter-spacing: .08em; text-transform: uppercase; color: var(--texto); }
+.arbol .hojas { display: flex; gap: 3mm; margin-top: 3mm; }
+.arbol .hojas span { flex: 1 1 0; min-width: 0; display: block; height: 9mm; border: 1px solid var(--linea); }
+.lista-hueco > li { margin-top: 2mm; }
+.funciones { display: flex; gap: 6mm; justify-content: center; font-weight: 600; margin: 0 0 3mm; }
+.funciones span { border: 1px solid var(--acento); padding: 1mm 3mm; }
+table.rx-hueco { font-size: 8.4pt; table-layout: fixed; }
+table.rx-hueco td { height: 21mm; background: var(--papel); }
+table.rx-hueco td.obs { font-size: 7.6pt; color: var(--tinta-suave); }
+table.rx-hueco td.fila { background: var(--papel-alto); }
+table.rx-hueco td.grupo { background: var(--suave); writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; font-family: var(--font-marca); font-weight: 600; font-size: 7.6pt; letter-spacing: .1em; text-transform: uppercase; color: var(--texto); width: 7mm; padding: 1mm; }
+table.rx-hueco td.gris { color: var(--tinta-suave); text-align: center; }
+.apaisada .mcr-tabla { break-inside: auto; margin-bottom: 0; }
+.apaisada table.rx-hueco td { height: 17.5mm; }
+.apaisada h1 { margin-top: 0; }
+
+/* ========== Selectividad: índice por años ========== */
+.anios { list-style: none; padding: 0; margin: 2mm 0 6mm; columns: 2; column-gap: 12mm; }
+.anios li { display: flex; align-items: baseline; gap: 2mm; padding: 1.6mm 0; border-bottom: 1px solid var(--linea); break-inside: avoid; }
+.anios .a { font-family: var(--font-titulos); font-weight: 600; font-size: 13pt; color: var(--texto); }
+.anios .pt { flex: 1; }
+.anios .p { font-family: var(--font-marca); font-weight: 600; font-size: 9pt; color: var(--tinta-suave); }
+.fuente { font-size: 8.5pt; color: var(--tinta-suave); border-top: 2px solid var(--acento); padding-top: 2mm; }
+
+/* ========== Sin huecos al pie de página (2026-11-02) ==========
+   Las tablas, cajas con tabla y ejercicios largos pueden partirse entre páginas;
+   lo que no se parte son las filas, las ecuaciones y las figuras. */
+.mcr-tabla { break-inside: auto; }
+.mcr-tabla.junta { break-inside: avoid; }
+.mcr-tabla tr, .rx, figure, .fila-fig, .condic { break-inside: avoid; }
+.mcr-caja:has(table), .mcr-caja:has(.fila-fig) { break-inside: auto; }
+.tipo-solucionario .mcr-ejercicio, .tipo-cuaderno .mcr-ejercicio:has(.solucion) { break-inside: auto; }
+.tipo-solucionario .mcr-ejercicio li { break-inside: avoid; }
+.tipo-solucionario .enunciado { break-after: avoid; }
+/* grupos de filas sin rowspan (para poder partir la tabla) */
+.mcr-tabla td.gr:not(.gr-fin), .mcr-tabla th.gr:not(.gr-fin) { border-bottom-color: transparent; }
+.mcr-tabla td.gr-sig { color: transparent; }
+.mcr-ejercicio:has(.cols2) { break-inside: auto; }
+.mcr-ejercicio .cols2 li { break-inside: avoid; }
+/* teoría: casillas que llenan la página */
+.tipo-teoria table.hueco td { height: 22mm; }
+.tipo-teoria table.hueco.alto td { height: 38mm; }
+.tipo-resumen .mcr-tabla:not(.junta) { break-inside: auto; }
+.tipo-resumen .mcr-caja:has(table) { break-inside: auto; }
+/* estructuras químicas como imagen SVG */
+img.est { width: auto; height: auto; vertical-align: middle; max-width: 100%; }
+.mcr-tabla td img.est { max-height: 19mm; }
+.mcr-tabla td.g img.est { max-height: 26mm; }
+.fila-fig img.est { max-height: 30mm; }
+.solucion .fila-fig img.est, .sol .fila-fig img.est { max-height: 24mm; }
+/* lo que invade el margen deja pasar antes la nota al margen */
+.tipo-apuntes .cuerpo > .mcr-tabla.ancha, .tipo-apuntes .cuerpo > .mcr-caja:has(.mcr-tabla.ancha), .tipo-apuntes .cuerpo > .practica,
+.tipo-apuntes .cuerpo > figure.ancha, .tipo-apuntes .cuerpo > .dos-col { clear: right; }
+/* título de tabla dentro de la cabecera (se repite si la tabla se parte y nunca queda solo) */
+.mcr-tabla thead tr.tit th { border-bottom: 0; color: var(--texto); font-size: 8pt; letter-spacing: .12em; padding: 0 0 1.5mm; background: none; }
+.mcr-tabla thead { break-after: avoid; }
+.mcr-tabla tbody tr:first-child { break-before: avoid; }
+/* actividades interactivas: QR + enlaces al final de un subapartado */
+.mcr-actividades { display: flex; gap: 4mm; align-items: center; margin: 2mm 0 var(--hueco); padding: 2.5mm 3mm; border: 1px solid var(--linea); border-left: var(--stroke-filete) solid var(--acento); break-inside: avoid; clear: right; }
+.mcr-actividades .qr { flex: none; } .mcr-actividades .qr img { width: 19mm; height: 19mm; display: block; }
+.mcr-actividades .tit { font-family: var(--font-marca); font-weight: 700; font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--texto); margin: 0 0 1mm; }
+.mcr-actividades ul { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 5mm; font-size: 8.5pt; line-height: 1.45; }
+.mcr-actividades li, .mcr-actividades p { break-inside: avoid; text-align: left !important; text-align-last: auto !important; hyphens: none !important; } .mcr-actividades li::before { content: "▸ "; color: var(--acento); }
+.mcr-actividades a { color: inherit; text-decoration: none; }
+.mcr-actividades .url { text-align: left; font-size: 7pt; color: var(--tinta-suave); margin: 1mm 0 0; }
+.mcr-caja__etiqueta { break-after: avoid; }
+.cuerpo .salto { break-before: page; }
+.mcr-caja.entera { break-inside: avoid; }

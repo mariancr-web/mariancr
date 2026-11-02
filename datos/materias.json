@@ -1,0 +1,38 @@
+{
+  "recursos": [
+    { "nombre": "Actividades", "url": "https://mariancr-actividades.vercel.app/" },
+    { "nombre": "Clase en directo", "url": "https://mariancr-directo.vercel.app/" },
+    { "nombre": "Test", "url": "https://mariancr-test.vercel.app/hacer.html" }
+  ],
+  "cursos": [
+    { "curso": "1eso", "etiqueta": "1.º ESO", "nivel": "1.º ESO", "materia": "Biología y Geología", "ruta": "1eso-biogeo", "temas": [] },
+    { "curso": "2eso", "etiqueta": "2.º ESO", "nivel": "2.º ESO", "materia": "Física y Química", "ruta": "2eso-fyq", "temas": [] },
+    { "curso": "4eso", "etiqueta": "4.º ESO", "nivel": "4.º ESO", "materia": "Física y Química", "ruta": "4eso-fyq", "temas": [] },
+    { "curso": "1bach", "etiqueta": "1.º Bach", "nivel": "1.º Bachillerato", "materia": "Física y Química", "ruta": "1bach-fyq", "temas": [] },
+    { "curso": "2bach", "etiqueta": "2.º Bach", "nivel": "2.º Bachillerato", "materia": "Química", "ruta": "2bach-quimica", "temas": [
+      {
+        "numero": 1,
+        "id": "2bach-quim-t01",
+        "titulo": "Química del carbono",
+        "libro": "/temas/2bach-quim-t01/libro.html",
+        "actividades": "2bach-quim-t01",
+        "secciones": [
+          { "titulo": "Teoría", "materiales": [
+            { "titulo": "Apuntes", "drive": "1qgegLe1oRdBDoD2wwmj-rqS4LbjoT9ko" },
+            { "titulo": "Resumen", "drive": "1VrupzGJiswodu6c6lImgs2JGEXMgjDtS" },
+            { "titulo": "Repaso final", "drive": "1-iVV-krmo-5bbPnG58fyn4uSC4jc8giR" }
+          ]},
+          { "titulo": "Ejercicios", "materiales": [
+            { "titulo": "Teoría", "sub": "Para completar", "drive": "1vKn_KvyreksRmLCxlVwM2PlFlFL0JlC5" },
+            { "titulo": "Ejercicios", "sub": "Solo enunciados", "drive": "1NggaVxIZn5GFZxuvqgu4bd0pVR789BqA" },
+            { "titulo": "Ejercicios", "sub": "Resueltos", "drive": "1vqEP-8W8py083UWIR2FJuuVvQujt_K79" },
+            { "titulo": "Ejercicios", "sub": "Selectividad", "drive": "1ry8yXWfUmFbjlv8J2dK2gu3rpI7E1dus" }
+          ]},
+          { "titulo": "Presentación", "materiales": [
+            { "titulo": "Presentación", "drive": "1raUPTN2b3oYb_SjeZdPWAc3SnNUFGJnG" }
+          ]}
+        ]
+      }
+    ]}
+  ]
+}

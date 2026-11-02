@@ -1,0 +1,122 @@
+/* mariancr · web de materias. Se carga después de mariancr.css (hoja común de la marca). */
+[hidden]{display:none!important}
+.mcr-app{display:flex;flex-direction:column}
+.mcr-app>main{flex:1}
+.mcr-contenedor{width:100%}
+.ojo{font:600 11px var(--font-marca);letter-spacing:.14em;text-transform:uppercase;color:var(--gris-web)}
+.mcr-hero .ojo{color:#94A3B8}
+.mcr-hero p{color:#CBD5E1;margin-top:8px;max-width:60ch;line-height:1.5}
+.pronto{font:600 11px var(--font-marca);letter-spacing:.08em;text-transform:uppercase;color:var(--gris-web);border:1px dashed var(--linea);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.pdf{font:700 10px var(--font-marca);letter-spacing:.08em;color:var(--texto);border:1px solid color-mix(in srgb,var(--acento) 45%,transparent);border-radius:3px;padding:2px 5px;flex:none}
+.migas{font:500 13px var(--font-marca);color:#94A3B8;display:flex;flex-wrap:wrap;gap:6px}
+.migas a{color:#CBD5E1;text-decoration:none}.migas a:hover{color:#fff}
+.migas b{color:#fff;font-weight:600}
+.num-tema{font:700 clamp(64px,10vw,104px)/.8 var(--font-marca);color:var(--acento);letter-spacing:-.04em}
+.cargando{padding:40px 0;color:var(--gris-web);font:500 15px var(--font-marca)}
+
+/* Portada: índice de cursos con pestaña lateral y desplegable de temas */
+.indice-cursos{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:10px}
+.curso-fila{list-style:none}
+.curso-fila summary{list-style:none;cursor:pointer;position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;background:var(--papel);border:1px solid var(--borde-web);border-radius:6px;padding:16px 64px 16px 18px;color:var(--tinta);overflow:hidden}
+.curso-fila summary::-webkit-details-marker{display:none}
+.curso-fila summary::after{content:attr(data-tab);position:absolute;right:0;top:0;bottom:0;width:48px;display:flex;align-items:center;justify-content:center;background:var(--acento);color:var(--sobre-acento);font:700 13px var(--font-marca);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.06em}
+.curso-fila[open] summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
+.curso-fila__ico{width:44px;height:44px}
+.curso-fila__t{font:700 19px var(--font-marca)}
+.curso-fila__s{color:var(--gris-web);font-size:14px;margin-top:2px}
+.curso-fila__der{display:flex;gap:6px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.chip-temas{font:700 13px var(--font-marca);height:28px;padding:0 10px;display:inline-flex;align-items:center;border-radius:4px;background:var(--acento);color:var(--sobre-acento)}
+.flecha{width:10px;height:10px;border-right:2px solid var(--gris-web);border-bottom:2px solid var(--gris-web);transform:rotate(45deg);margin:0 4px 4px 10px;transition:transform .15s}
+.curso-fila[open] .flecha{transform:rotate(-135deg);margin-bottom:-4px}
+.lista-temas{list-style:none;margin:0;padding:6px 64px 10px 78px;background:var(--papel);border:1px solid var(--borde-web);border-top:0;border-radius:0 0 6px 6px}
+.lista-temas li{border-bottom:1px solid var(--borde-web)}
+.lista-temas li:last-child{border-bottom:0}
+.lista-temas a{display:flex;align-items:center;gap:12px;padding:10px 0;color:var(--tinta);text-decoration:none;font:600 16px var(--font-marca)}
+.lista-temas a:hover{color:var(--texto)}
+.lista-temas b{font:700 20px var(--font-marca);color:var(--acento);min-width:24px}
+.lista-temas .vacio{padding:10px 0;color:var(--gris-web);font:500 15px var(--font-marca)}
+.recursos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:720px;margin-bottom:8px}
+.recurso{display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;background:var(--papel);border:1px solid var(--borde-web);border-radius:6px;color:var(--tinta);text-decoration:none;font:600 16px var(--font-marca);transition:transform .15s,box-shadow .15s}
+.recurso:hover{transform:translateY(-2px);box-shadow:0 10px 22px -14px var(--acento-general)}
+.recurso img{width:40px;height:40px}
+
+/* Página del tema */
+.tema-cab{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-top:14px}
+.mat{display:flex;gap:12px;align-items:center;min-height:77px;padding:14px;background:var(--papel);border:1px solid var(--borde-web);border-left:5px solid var(--acento);border-radius:6px;text-decoration:none;color:var(--tinta);font:inherit;text-align:left;cursor:pointer;width:100%;transition:transform .15s,box-shadow .15s}
+.mat:hover{transform:translateY(-2px);box-shadow:0 10px 22px -14px var(--acento)}
+.mat b{display:block;font:600 16px var(--font-marca)}
+.mat small{display:block;margin-top:2px;color:var(--gris-web);font-size:13px}
+.mat[disabled]{cursor:default;border-left-color:var(--linea);opacity:.7}
+.mat[disabled]:hover{transform:none;box-shadow:none}
+.mat[disabled] .pdf{color:var(--gris-web);border-color:var(--linea)}
+.mat--libro{min-height:0;background:var(--suave);border-color:color-mix(in srgb,var(--acento) 40%,transparent);border-left-color:var(--acento);cursor:default}
+.mat--libro:hover{transform:none;box-shadow:none}
+.mat--libro .mcr-btn{margin-left:auto}
+.grupo .mcr-seccion{margin-top:24px}
+.mats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+
+/* Visor de PDF integrado */
+.visor{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;background:var(--papel-alto)}
+.visor__barra{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;background:var(--banda);color:#fff;border-bottom:4px solid var(--acento);padding:calc(10px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+.visor__barra .mcr-btn{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.visor__barra .mcr-btn--prim{background:var(--acento);border-color:var(--acento);color:var(--sobre-acento)}
+.visor__tit{display:grid;gap:2px;min-width:0}
+.visor__tit .ojo{color:#94A3B8}
+.visor__tit strong{font:700 18px var(--font-marca);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.visor__acc{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.visor iframe{flex:1;width:100%;border:0;background:var(--papel-alto)}
+
+/* Libro interactivo */
+.pestanas{display:flex;gap:4px;overflow-x:auto;background:var(--banda);padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
+.pestanas a{display:flex;align-items:center;gap:8px;padding:10px 14px;font:600 14px var(--font-marca);color:#CBD5E1;text-decoration:none;border-radius:6px 6px 0 0;white-space:nowrap}
+.pestanas a b{color:var(--acento)}
+.pestanas a[aria-current="true"]{background:var(--papel-alto);color:var(--tinta)}
+.pestanas a[aria-current="true"] b{color:var(--texto)}
+.lector{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding-block:24px 32px;max-width:1160px}
+.toc{position:sticky;top:16px;align-self:start;font-size:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.toc a{display:flex;gap:8px;padding:6px 8px;border-radius:4px;color:var(--tinta);text-decoration:none;line-height:1.3}
+.toc a:hover{background:var(--suave)}
+.toc a span{font:600 13px var(--font-marca);color:var(--texto);min-width:30px}
+.hoja{background:var(--papel);border:1px solid var(--borde-web);border-radius:6px;padding:28px 32px;min-width:0;overflow:hidden}
+.hoja .cuerpo>h1.ap:first-child,.hoja .cuerpo>.apertura:first-child{margin-top:0}
+.hoja .apertura{margin-bottom:24px}
+.hoja .apertura .zona-tit{margin-top:0}
+.hoja .mcr-actividades{clear:both}
+.hoja .cuerpo [id]{scroll-margin-top:16px}
+.pasar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:24px;padding-top:14px;border-top:1px solid var(--linea)}
+.pasar a{font:600 14px var(--font-marca);color:var(--texto);text-decoration:none}
+
+/* Recuadro de actividades en la web: lista + actividades dentro de la página */
+.hoja .mcr-actividades{display:block;margin:16px 0 20px;border:1px solid color-mix(in srgb,var(--acento) 40%,transparent);border-radius:6px;overflow:hidden;padding:0;background:var(--papel)}
+.hoja .mcr-actividades .qr{display:none}
+.hoja .mcr-actividades .tit{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0;padding:10px 16px;background:var(--texto);color:var(--sobre-acento);font:700 12px var(--font-marca);letter-spacing:.12em;text-transform:uppercase}
+.hoja .mcr-actividades ul{margin:0;padding:10px 16px 10px 34px}
+.hoja .mcr-actividades li{text-align:left}
+.act-abrir{margin:0 16px 14px}
+.hoja .mcr-actividades iframe{display:block;width:100%;border:0;border-top:1px solid var(--borde-web);min-height:240px;background:var(--papel-alto)}
+
+@media (max-width:900px){
+ .lector{grid-template-columns:1fr}
+ .toc{position:static}
+ .toc ol{display:flex;flex-wrap:wrap;gap:6px}
+ .toc a{border:1px solid var(--borde-web);background:var(--papel)}
+ .hoja{padding:20px 18px}
+ .hoja.tipo-apuntes .cuerpo{padding-right:0}
+ .hoja.tipo-apuntes .cuerpo h1{margin-right:0}
+ .hoja.tipo-apuntes .cuerpo>.mcr-tabla.ancha{width:100%}
+ .hoja .mcr-nota{float:none;width:auto;margin:0 0 12px;display:block}
+ .hoja .cuerpo>.mcr-tabla.ancha,.hoja .cuerpo>.mcr-caja,.hoja .cuerpo>.practica,.hoja .cuerpo>figure.ancha,.hoja .cuerpo>.dos-col{margin-right:0!important;width:100%!important}
+ .hoja table{display:block;overflow-x:auto}
+ .mats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+ .curso-fila summary{grid-template-columns:auto 1fr;padding-right:56px}
+ .curso-fila__der{grid-column:1/-1;justify-content:flex-start}
+ .lista-temas{padding:4px 16px 8px}
+ .recursos{grid-template-columns:1fr}
+ .mat--libro{flex-wrap:wrap}.mat--libro .mcr-btn{margin-left:0}
+ .visor__acc{margin-left:0;width:100%}.visor__acc .mcr-btn{flex:1}
+}
+@media (max-width:420px){.mats{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>mariancr · Libro interactivo</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="https://mariancr-marca.vercel.app/mariancr.css">
+<link rel="stylesheet" href="/css/libro.css">
+<link rel="stylesheet" href="/css/web.css">
+</head>
+<body class="mcr mcr-app curso-general">
+<header class="mcr-barra"><a class="mcr-barra__marca" href="/"><img src="/img/logo-negativo.svg" alt="mariancr"><span class="mcr-barra__nombre" id="nombre">Materias</span></a>
+  <div class="mcr-barra__usuario"><a class="mcr-btn mcr-btn--peq" id="volver" href="/">← Volver al tema</a></div></header>
+<nav class="pestanas" id="pestanas" aria-label="Apartados"></nav>
+<main class="mcr-contenedor lector" id="lector">
+  <nav class="toc" id="toc" aria-label="Índice del apartado"></nav>
+  <article class="hoja mcr bach tipo-apuntes" id="hoja"><p class="cargando">Cargando…</p></article>
+</main>
+<footer class="mcr-pie-app">mariancr · Materias</footer>
+<script type="module" src="/js/libro.js"></script>
+</body>
+</html>
