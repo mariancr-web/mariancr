@@ -1,8 +1,8 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/:curso/:tema/libro", "destination": "/libro.html" },
-    { "source": "/:curso/:tema", "destination": "/tema.html" }
+    { "source": "/:curso/:tema/libro", "destination": "/libro" },
+    { "source": "/:curso/:tema", "destination": "/tema" }
   ],
   "headers": [
     { "source": "/datos/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }] },
