@@ -12,10 +12,12 @@
 .migas a{color:#CBD5E1;text-decoration:none}.migas a:hover{color:#fff}
 .migas b{color:#fff;font-weight:600}
 .num-tema{font:700 clamp(64px,10vw,104px)/.8 var(--font-marca);color:var(--acento);letter-spacing:-.04em}
+.hero-logo{margin:14px 0 4px}
+.hero-logo img{display:block;height:clamp(48px,8vw,72px);width:auto}
 .cargando{padding:40px 0;color:var(--gris-web);font:500 15px var(--font-marca)}
 
 /* Portada: índice de cursos con pestaña lateral y desplegable de temas */
-.indice-cursos{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:10px}
+.indice-cursos{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
 .curso-fila{list-style:none}
 .curso-fila summary{list-style:none;cursor:pointer;position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;background:var(--papel);border:1px solid var(--borde-web);border-radius:6px;padding:16px 64px 16px 18px;color:var(--tinta);overflow:hidden}
 .curso-fila summary::-webkit-details-marker{display:none}
