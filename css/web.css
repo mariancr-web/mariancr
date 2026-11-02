@@ -12,7 +12,10 @@
 .migas a{color:#CBD5E1;text-decoration:none}.migas a:hover{color:#fff}
 .migas b{color:#fff;font-weight:600}
 .num-tema{font:700 clamp(64px,10vw,104px)/.8 var(--font-marca);color:var(--acento);letter-spacing:-.04em}
-.hero-logo{margin:14px 0 4px}
+.hero-portada{display:flex;align-items:center;flex-wrap:wrap;gap:14px 28px}
+.hero-logo{margin:0}
+.hero-txt{border-left:1px solid rgba(255,255,255,.25);padding-left:28px}
+.hero-txt p{margin-top:4px}
 .hero-logo img{display:block;height:clamp(48px,8vw,72px);width:auto}
 .cargando{padding:40px 0;color:var(--gris-web);font:500 15px var(--font-marca)}
 
@@ -117,6 +120,7 @@
  .curso-fila__der{grid-column:1/-1;justify-content:flex-start}
  .lista-temas{padding:4px 16px 8px}
  .recursos{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero-txt{border-left:0;padding-left:0}
  .mat--libro{flex-wrap:wrap}.mat--libro .mcr-btn{margin-left:0}
  .visor__acc{margin-left:0;width:100%}.visor__acc .mcr-btn{flex:1}
 }
