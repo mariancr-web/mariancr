@@ -1,9 +1,9 @@
 {
   "recursos": [
-    { "nombre": "Actividades", "url": "https://mariancr-actividades.vercel.app/" },
-    { "nombre": "Clase en directo", "url": "https://mariancr-directo.vercel.app/" },
-    { "nombre": "Test", "url": "https://mariancr-test.vercel.app/" },
-    { "nombre": "Muro", "url": "https://mariancr-muro.vercel.app/" }
+    { "nombre": "Actividades", "url": "https://actividades.mariancr.es/" },
+    { "nombre": "Clase en directo", "url": "https://directo.mariancr.es/" },
+    { "nombre": "Test", "url": "https://test.mariancr.es/" },
+    { "nombre": "Muro", "url": "https://muro.mariancr.es/" }
   ],
   "cursos": [
     { "curso": "1eso", "etiqueta": "1.º ESO", "nivel": "1.º ESO", "materia": "Biología y Geología", "ruta": "1eso-biogeo", "temas": [] },
