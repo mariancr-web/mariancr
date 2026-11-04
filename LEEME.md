@@ -7,6 +7,6 @@ Web estática (sin compilación) publicada en Vercel desde el repositorio `maria
 - `libro.html`: libro interactivo (`/2bach-quimica/t01/libro`), con las actividades de mariancr-actividades dentro de cada recuadro.
 - `datos/materias.json`: cursos, temas y el ID de Drive de cada PDF. **Para añadir un tema** se añade aquí su bloque y, si tiene libro, su carpeta en `temas/`.
 - `temas/<tema>/libro.html`: contenido de los apuntes (sale del mismo HTML que el PDF) + `img/` y `estructuras/`.
-- Estilos: hoja común `https://mariancr-marca.vercel.app/mariancr.css` + `css/libro.css` (la de los apuntes) + `css/web.css`.
+- Estilos: hoja común `https://marca.mariancr.es/mariancr.css` + `css/libro.css` (la de los apuntes) + `css/web.css`.
 
 Los PDF de Drive deben estar compartidos como «Cualquier persona con el enlace». Para corregir un PDF, usar «Gestionar versiones» en Drive (el enlace no cambia).
