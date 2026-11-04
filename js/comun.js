@@ -1,5 +1,5 @@
 // mariancr · web de materias · utilidades comunes
-export const ACTIVIDADES = 'https://mariancr-actividades.vercel.app/';
+export const ACTIVIDADES = 'https://actividades.mariancr.es/';
 
 export async function cargarDatos() {
   const r = await fetch('/datos/materias.json', { cache: 'no-cache' });
