@@ -118,6 +118,65 @@
      ]
     },
     {
+     "numero": 2,
+     "id": "2bach-quim-t02",
+     "titulo": "Estructura atómica y sistema periódico",
+     "actividades": "2bach-quim-t02",
+     "secciones": [
+      {
+       "titulo": "Teoría",
+       "materiales": [
+        {
+         "titulo": "Apuntes",
+         "drive": "1yaEsyzy9PUTU78c1gVP0qaS_DN3ctREt"
+        },
+        {
+         "titulo": "Resumen",
+         "drive": "1r94DBEmlmyBMR5tJZ5q6zvJX6WIi7TZA"
+        },
+        {
+         "titulo": "Repaso final",
+         "drive": "1A-Wkk-8ll7uSbTIkBG80q2wRcS7ID3ea"
+        }
+       ]
+      },
+      {
+       "titulo": "Ejercicios",
+       "materiales": [
+        {
+         "titulo": "Teoría",
+         "sub": "Para completar",
+         "drive": "1zUU8fkFuGsNSQQ49BfMCkFDYwuz_Mj0t"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Solo enunciados",
+         "drive": "1ZC7vnwTQfB4Oc4-T4ngE701qTtDjTatP"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Resueltos",
+         "drive": "1EwkOBidO8aL-uLOvzdelP041cXu-Funm"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Selectividad",
+         "drive": "1Z6zIHXEdUkNPQVvTqpINgDz2jaP7n7CZ"
+        }
+       ]
+      },
+      {
+       "titulo": "Presentación",
+       "materiales": [
+        {
+         "titulo": "Presentación",
+         "drive": "1A-xHzaJl0bdeHrPdR--yknYXYPAPZa5t"
+        }
+       ]
+      }
+     ]
+    },
+    {
      "numero": 3,
      "id": "2bach-quim-t03",
      "titulo": "Enlace químico",
