@@ -296,6 +296,66 @@
        ]
       }
      ]
+    },
+    {
+     "numero": 5,
+     "id": "2bach-quim-t05",
+     "titulo": "Cinética química",
+     "libro": "/temas/2bach-quim-t05/libro.html",
+     "actividades": "2bach-quim-t05",
+     "secciones": [
+      {
+       "titulo": "Teoría",
+       "materiales": [
+        {
+         "titulo": "Apuntes",
+         "drive": "1BDnL-_DrBFK1bFHWd6HUIqEKlIFDDq0N"
+        },
+        {
+         "titulo": "Resumen",
+         "drive": "1dTNul7Uxafae1qqIx_upD6mxHbONorjf"
+        },
+        {
+         "titulo": "Repaso final",
+         "drive": "1rieQvhFXt81MjL9AYWtG4BQHQJgv3rdx"
+        }
+       ]
+      },
+      {
+       "titulo": "Ejercicios",
+       "materiales": [
+        {
+         "titulo": "Teoría",
+         "sub": "Para completar",
+         "drive": "1SmLG6_ppUrzwtIaHkVZIuXJ35_8XeDgh"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Solo enunciados",
+         "drive": "19ZxtYYaXgwjPE-j0Wf2aUiYzE8yQquxR"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Resueltos",
+         "drive": "1cSWMIbJXRiwN2S94kwTqqzgHSaWJdrlb"
+        },
+        {
+         "titulo": "Ejercicios",
+         "sub": "Selectividad",
+         "drive": "1xvNhbf3JVSdlpBF1xZnGL6J9SY11jJch"
+        }
+       ]
+      },
+      {
+       "titulo": "Presentación",
+       "materiales": [
+        {
+         "titulo": "Presentación",
+         "drive": "1wBMGtYsauR_ckEZFeRC7_PzqLLO7PVtV"
+        }
+       ]
+      }
+     ]
     }
    ]
   }

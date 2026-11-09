@@ -1,0 +1,521 @@
+<style>
+.formula { text-align: center !important; font-family: var(--font-cuerpo); font-size: 1.08em; margin: 2mm 0 var(--hueco); break-inside: avoid; }
+.mcr-caja .formula { margin: 1mm 0; }
+.datos { font-size: .9em; color: var(--tinta-suave); }
+.nota-sol { font-size: .9em; color: var(--tinta-suave); border-left: 2px solid var(--linea); padding-left: 2.5mm; }
+ol.lista[type=a] { list-style: lower-alpha; padding-left: 6mm; }
+ol.lista[type=a] > li::marker { font-family: var(--font-marca); font-weight: 700; color: var(--texto); }
+.lado figure { margin: 0; }
+.fila-fig .orb + small, .fila-fig small { margin-top: 1mm; }
+.mcr-ejercicio__cuerpo .fila-fig { justify-content: flex-start; }
+.solucion .orb { margin: 1mm 3mm 1mm 0; }
+.mcr-tabla td[colspan] { text-align: center; }
+.lado { grid-template-columns: minmax(0,1fr) auto; }
+.lado > figure img { max-width: 56mm; height: auto; }
+.particulas td { white-space: nowrap; font-size: .95em; }
+.particulas td:first-child { white-space: normal; }
+.mcr-caja--ejemplo ol[type=a] { list-style: lower-alpha; padding-left: 6mm; }
+.mcr-caja--ejemplo ol[type=a] > li { padding-left: 0; }
+.mcr-caja--ejemplo ol[type=a] > li::before { content: none; }
+.nombre-fecha { font-family: var(--font-marca); font-size: 9pt; color: var(--tinta-suave); margin: -3mm 0 5mm; }
+.linea-h { display: inline-block; border-bottom: 1px solid var(--tinta-suave); margin: 0 4mm 0 1mm; height: 1em; }
+.tipo-teoria table.hueco.bajo td { height: 11mm; }
+.tipo-teoria .hueco td.conceptos p { margin: 0 0 9mm; text-align: left; }
+.tipo-teoria .prop td { height: 30mm; }
+.mini-tp { width: 34mm; }
+.salto-antes { break-before: page; }
+.tipo-teoria .cuerpo h1.salto-antes { margin-top: 0; }
+.tipo-teoria table.hueco td { height: 15mm; }
+.tipo-teoria table.hueco.bajo td { height: 8.5mm; padding-top: .8mm; padding-bottom: .8mm; }
+.tipo-teoria table.hueco.alto td { height: 33mm; }
+.tipo-teoria .prop td { height: 25mm; }
+.tipo-teoria .cuerpo h1 { margin-top: 4mm; }
+.anios a { display: flex; align-items: baseline; gap: 2mm; width: 100%; color: inherit; }
+.cuerpo h2.zona-tit { font-family: var(--font-titulos); color: var(--tinta); font-size: 22pt; margin: 0 0 6mm; }
+
+.keep { break-inside: avoid; }
+.tipo-apuntes .cuerpo > .keep > .mcr-tabla.ancha { width: calc(100% + 40mm); }
+.tipo-apuntes .cuerpo > .keep > .mcr-caja:has(.mcr-tabla.ancha), .tipo-apuntes .cuerpo > .keep > figure.ancha, .tipo-apuntes .cuerpo > .keep > .dos-col { margin-right: -40mm; clear: right; }
+.cuerpo > .keep:first-child > h1 { margin-top: 0; }
+.mcr-caja--ejemplo, .mcr-caja--definicion, .mcr-caja--atencion { break-inside: avoid !important; }
+.tipo-solucionario .mcr-ejercicio, .tipo-cuaderno .mcr-ejercicio { break-inside: avoid !important; }
+
+p { orphans: 3; widows: 3; }
+li { break-inside: avoid; }
+
+.cuerpo p, .cuerpo li { text-wrap: pretty; }
+.cuerpo p, .cuerpo li, .mcr-nota { break-inside: avoid; }
+.cuerpo .mcr-caja p, .cuerpo td p { break-inside: auto; }
+.mcr-caja--ejemplo.larga, .tipo-solucionario .mcr-ejercicio.larga { break-inside: auto !important; }
+.mcr-caja.larga ol > li, .mcr-ejercicio.larga li { break-inside: avoid; }
+.solucion > .mcr-etiqueta, .mcr-caja__etiqueta { break-after: avoid; }
+.lista-junta { break-inside: avoid; }
+
+.cuerpo p, .cuerpo li { break-inside: auto; }
+.cuerpo p.corto, .cuerpo li, .lista-junta { break-inside: avoid; }
+.mcr-caja:has(table), .mcr-caja.larga, .tipo-solucionario .mcr-ejercicio { break-inside: auto !important; }
+.salto-auto { break-before: page !important; }
+.nw { white-space: nowrap; }
+figure.flota { float: right; width: 54mm; margin: 1mm 0 3mm 6mm; }
+figure.flota img { width: 100%; }
+.tipo-apuntes .cuerpo .mcr-actividades { clear: none; }
+.mcr-nota + .mcr-actividades, .mcr-actividades { clear: none; }
+
+.tipo-apuntes .cuerpo > .mcr-tabla.ancha, .tipo-apuntes .cuerpo > .keep > .mcr-tabla.ancha { width: calc(100% + 38mm); }
+.tipo-apuntes .cuerpo > .mcr-caja:has(.mcr-tabla.ancha), .tipo-apuntes .cuerpo > .practica, .tipo-apuntes .cuerpo > figure.ancha, .tipo-apuntes .cuerpo > .dos-col,
+.tipo-apuntes .cuerpo > .keep > .mcr-caja:has(.mcr-tabla.ancha), .tipo-apuntes .cuerpo > .keep > figure.ancha, .tipo-apuntes .cuerpo > .keep > .dos-col { margin-right: -38mm; }
+figure.flota.peq { width: 40mm; }
+.mcr-nota { break-inside: avoid; break-before: auto; }
+
+.razona { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 1mm 0 var(--hueco); border: 1px solid var(--linea); border-top: 3px solid var(--acento); break-inside: avoid; }
+.razona > div { padding: 2.2mm 3mm; }
+.razona > div + div { border-left: 1px solid var(--linea); }
+.razona .mcr-etiqueta { display: block; color: var(--texto); margin-bottom: 1mm; }
+.razona p { margin: 0; text-align: left !important; }
+.compara .dos-c { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.compara .ct { font-family: var(--font-marca); font-weight: 700; font-size: 8.5pt; color: var(--tinta); margin: 0 0 1mm; }
+.compara p { text-align: left !important; }
+.compara .mcr-resultado { margin-top: 1mm; }
+.magn .mcr-caja { margin: 0; }
+.magn .fila-fig { justify-content: flex-start; margin: 1mm 0; }
+.resumen-prop td { vertical-align: top; }
+.resumen-prop td.izq { text-align: left !important; }
+.mcr-caja--ejemplo:not(.larga) { break-inside: avoid !important; }
+
+.mcr-nota { border-top: 0 !important; padding-top: 0 !important; }
+.mcr-nota > .mcr-etiqueta { border-top: 2px solid var(--acento); padding-top: 1.6mm; break-after: avoid; }
+.tipo-cuaderno .mcr-nota > .mcr-etiqueta, .tipo-resumen .mcr-nota > .mcr-etiqueta, .tipo-solucionario .mcr-nota > .mcr-etiqueta { border-top: 0; padding-top: 0; }
+.razona, .compara { clear: both; }
+.resumen-prop { break-inside: auto !important; }
+.resumen-prop tr { break-inside: avoid; }
+
+img.fig-in { display: inline-block; vertical-align: middle; height: auto; }
+.res { font-family: var(--font-marca); font-weight: 700; color: var(--texto); font-size: 14pt; align-self: center; margin: 0 1mm; }
+.lista40 { display: grid; grid-template-columns: repeat(8, 1fr); gap: 1.2mm 2mm; margin: 2mm 0; font-size: .95em; }
+.lista40 b { font-family: var(--font-marca); color: var(--texto); font-size: .85em; margin-right: .8mm; }
+.lw-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3mm 2mm; margin: 2mm 0; align-items: end; }
+.lw-grid > div { text-align: center; break-inside: avoid; }
+.lw-grid small { display: block; font-size: 8pt; color: var(--tinta-suave); margin-top: .8mm; }
+.lw-grid .n { display: block; font-family: var(--font-marca); font-weight: 700; color: var(--texto); font-size: 8pt; text-align: left; }
+.mcr-tabla.ficha td { vertical-align: middle; font-size: .92em; }
+.mcr-tabla.ficha small { color: var(--tinta-suave); }
+.mcr-tabla.rejilla td { height: 22mm; }
+.mcr-tabla.rejilla td.x { background: var(--papel-alto); }
+ul.leyenda { font-size: .92em; }
+ol.pasos { padding-left: 5.5mm; }
+ol.pasos > li { margin-bottom: 1mm; }
+.hib-fila { display: flex; gap: 4mm; justify-content: center; margin: 2mm 0 3mm; flex-wrap: wrap; }
+.hib-card { border: 1px solid var(--linea); background: #fff; padding: 2mm 3mm; text-align: center; break-inside: avoid; }
+.hib-card .hc-tit { font-family: var(--font-marca); font-weight: 700; color: var(--texto); font-size: 9pt; margin: 0 0 1.5mm; }
+.hib-card .hc-lob, .hib-card .hc-et { display: flex; gap: 1.2mm; justify-content: center; }
+.hib-card .hc-lob span { width: 10mm; height: 6mm; display: grid; place-items: center; background: var(--suave); border: 1px solid var(--acento); font-family: var(--font-marca); font-weight: 700; font-size: 8.5pt; }
+.hib-card .hc-lob span.p { background: #fff; border-color: var(--tinta-suave); }
+.hib-card .hc-et span { width: 10mm; font-family: var(--font-marca); font-weight: 600; font-size: 8pt; color: var(--texto); margin-top: .8mm; }
+.hib-card .hc-et span.p { color: var(--tinta-suave); }
+.hib-card .hc-geo { font-family: var(--font-marca); font-size: 8pt; color: var(--tinta-suave); margin: 1.2mm 0 0; }
+.resumen-tipos td { font-size: .9em; }
+
+.tipo-apuntes .mcr-indice li.n1 { padding: 1mm 0; }
+.tipo-apuntes .apertura { padding: 3mm 4mm; margin-top: 3mm; } .tipo-apuntes .apertura li { margin-bottom: .5mm; }
+.tipo-apuntes .mcr-indice li.n1 > ol { margin-top: .6mm; }
+.tipo-apuntes .mcr-indice li.n2 { font-size: .86em; line-height: 1.18; }
+.tipo-apuntes .indice .zona-tit { margin-bottom: 3mm; }
+
+.mcr-caja--atencion:has(ol.pasos) { break-inside: auto !important; }
+.mcr-caja .lado figure { margin: 0; } .mcr-caja .lado > figure img { max-width: 40mm; }
+
+.keep:has(> table.resumen-prop) { break-inside: auto !important; }
+.keep > .tabla-tit { break-after: avoid; }
+table.resumen-prop thead { display: table-header-group; }
+caption.tabla-tit { caption-side: top; text-align: left; padding-bottom: 1.5mm; }
+
+.tipo-solucionario .solo-cuaderno { display: none; }
+.tipo-teoria table.hueco.tipos td { height: 34mm !important; } .tipo-teoria .tipos td:first-child { width: 32mm; }
+.tipo-teoria table.hueco.prop5 td { height: 36mm !important; } .tipo-teoria .prop5 td:first-child { width: 30mm; }
+.tipo-teoria table.hueco.sing td { height: 15.5mm !important; } .tipo-teoria .sing td:nth-child(2) { width: 46mm; }
+.tipo-teoria .sing td.fila { width: 22mm; }
+
+.props { border-top: 1px solid var(--linea); margin: 1mm 0 var(--hueco); }
+.prop { display: grid; grid-template-columns: 34mm 1fr; gap: 0 4mm; padding: 1.8mm 0; border-bottom: 1px solid var(--linea); break-inside: avoid; }
+.prop__t { margin: 0; font-family: var(--font-marca); font-weight: 700; font-size: 9pt; color: var(--tinta); line-height: 1.25; }
+.prop__t span { display: block; font-weight: 600; color: var(--texto); margin-top: .8mm; font-size: 8.5pt; }
+.prop__r p { margin: 0; }
+
+.mcr-ejercicio ol, .mcr-ejercicio ol[type=a] { list-style: none !important; counter-reset: ap; padding-left: 6.5mm; }
+.mcr-ejercicio ol > li { counter-increment: ap; position: relative; }
+.mcr-ejercicio ol > li::marker { content: none; }
+.mcr-ejercicio ol > li::before { content: counter(ap, lower-alpha) ")"; position: absolute; left: -6.5mm; width: 5.5mm; font-family: var(--font-marca); font-weight: 700; color: var(--texto); }
+.mcr-ejercicio ol[start="2"] { counter-reset: ap 1; } .mcr-ejercicio ol[start="3"] { counter-reset: ap 2; } .mcr-ejercicio ol[start="4"] { counter-reset: ap 3; }
+.mcr-ejercicio ol[start="5"] { counter-reset: ap 4; } .mcr-ejercicio ol[start="6"] { counter-reset: ap 5; } .mcr-ejercicio ol[start="7"] { counter-reset: ap 6; }
+.mcr-ejercicio li[data-split-from]::before { content: none; }
+.mcr-ejercicio ul ul, .mcr-ejercicio ol ul { padding-left: 4.5mm; }
+
+.mcr-caja--ejemplo, .mcr-caja--ejemplo:not(.larga) { break-inside: auto !important; }
+.mcr-caja--ejemplo > p, .mcr-caja--ejemplo li, .mcr-caja--ejemplo .fila-fig, .mcr-caja--ejemplo figure, .mcr-caja--ejemplo .lado { break-inside: avoid; }
+.mcr-caja--ejemplo > .mcr-caja__etiqueta, .mcr-caja--ejemplo > p:first-of-type { break-after: avoid; }
+.tipo-apuntes .solo-cuaderno { display: none; }
+.mcr-caja { display: block !important; }
+.mcr-caja > * + * { margin-top: 1.5mm; }
+.mcr-caja > .mcr-caja__etiqueta, .mcr-caja > .keep > .mcr-caja__etiqueta { display: flex; margin-bottom: 1.5mm; }
+.practica { break-before: auto !important; }
+
+
+.tipo-apuntes .mcr-indice li.n2 { font-size: .8em; line-height: 1.08; }
+.tipo-apuntes .mcr-indice li.n1 { padding: .6mm 0; }
+.tipo-apuntes .apertura { margin-top: 2mm; padding: 2.5mm 4mm; font-size: .95em; }
+.mcr-caja--ejemplo > .keep { break-inside: avoid; }
+.mcr-ejercicio__cuerpo > .keep { display: grid; gap: 1.5mm; }
+.solucion.sol-ini { padding-bottom: 0; }
+.solucion.sol-cont { margin-top: -1.5mm; padding-top: 1.5mm; }
+.solucion.sol-ini > ol, .solucion.sol-ini > ul { margin-bottom: 0; }
+.solucion.sol-cont > ol:first-child, .solucion.sol-cont > ul:first-child { margin-top: 0; }
+table.ecs { margin: 1.5mm auto; border-collapse: collapse; width: auto; break-inside: avoid; }
+table.ecs td { border: 0 !important; padding: .4mm 2.5mm; background: none !important; font-size: 1em; }
+table.ecs td.dh { text-align: left; white-space: nowrap; padding-left: 6mm; }
+
+.practica .mcr-ejercicio, .tipo-cuaderno .mcr-ejercicio { break-inside: auto !important; }
+.practica .mcr-ejercicio li, .tipo-cuaderno .mcr-ejercicio li { break-inside: avoid; }
+.mcr-ejercicio .enunciado > p:first-child, .mcr-ejercicio .enunciado > table.ecs { break-after: avoid; }
+.enunciado.enun-cont { margin-top: -1.5mm; }
+.enunciado.enun-cont > ol:first-child { margin-top: 0; }
+
+.tipo-apuntes .nota-ancla { height: 0; position: relative; margin: 0; }
+.tipo-apuntes .nota-ancla > .mcr-nota { position: absolute; top: 0; right: -40mm; width: 34mm; float: none; margin: 0; display: block; }
+.tipo-cuaderno .cuerpo h1, .tipo-solucionario .cuerpo h1 { margin: 4mm 0 3mm; }
+
+.mcr-ejercicio:has(+ .mcr-ejercicio.cont) { margin-bottom: 0 !important; }
+.mcr-ejercicio.cont { margin-top: 0; }
+.mcr-ejercicio__num.vacio { visibility: hidden; }
+.mcr-ejercicio.cont .solucion.sol-cont { padding-top: 1.5mm; }
+.mcr-ejercicio.cont .enunciado.enun-cont { padding-top: 1mm; }
+.mcr-ejercicio .solucion.sol-ini { padding-bottom: 1mm; }
+
+.cuerpo .mcr-ejercicio:not(.cont) { break-inside: avoid !important; }
+.cuerpo .mcr-ejercicio.cont { break-inside: auto !important; }
+.tipo-resumen .mcr-caja--atencion { break-inside: auto !important; } .tipo-resumen .mcr-caja--atencion li { break-inside: avoid; }
+.mcr-ejercicio li.li-cont { counter-increment: none; } .mcr-ejercicio li.li-cont::before { content: none; }
+.mcr-ejercicio ol > li::before { content: none !important; }
+.mcr-ejercicio ol > li > .let { position: absolute; left: -6.5mm; width: 5.5mm; font-family: var(--font-marca); font-weight: 700; color: var(--texto); }
+.tipo-solucionario .mcr-nota.recuerda, .tipo-cuaderno .mcr-nota.recuerda { margin-top: 3mm; }
+
+.tipo-teoria table.hueco td.fila { width: 46mm; }
+.tipo-teoria table.hueco tr { break-inside: avoid; }
+.tipo-teoria table.hueco td { height: 10mm; }
+.tipo-teoria table.hueco.bajo td { height: 6.6mm; }
+.tipo-teoria table.hueco.alto td { height: 34mm; }
+.tipo-teoria .mcr-tabla { margin-bottom: 2.5mm !important; }
+.tipo-teoria h1 { margin-top: 4mm !important; }
+.tipo-teoria table.hueco.alto2 td { height: 16mm; }
+.formula-li { font-family: var(--font-cuerpo); font-size: 1.04em; }
+.mcr-ejercicio .enunciado .mcr-tabla th, .mcr-ejercicio .enunciado .mcr-tabla td { padding-top: .5mm !important; padding-bottom: .5mm !important; }
+.mcr-ejercicio .enunciado .mcr-tabla { margin: 1mm 0 1.5mm !important; }
+.tipo-solucionario .mcr-ejercicio:not(.cont) .enunciado { break-inside: avoid; }
+.tipo-solucionario .mcr-ejercicio:not(.cont) { break-inside: avoid; }
+
+/* pantalla (web) */
+.hoja .mcr-nota { position: static !important; width: auto !important; float: none !important; margin: 2mm 0 3mm !important; }
+.hoja figure img { max-width: 100%; height: auto; }
+.hoja .mcr-tabla.ancha, .hoja figure.ancha, .hoja .practica { margin-right: 0 !important; width: auto !important; }
+</style>
+<section class="apertura"><h2 class="zona-tit">En este tema</h2>
+<ul>
+<li>Definir la velocidad de reacción, expresarla con los convenios de signo, coeficientes y unidades, y calcular velocidades medias.</li>
+<li>Escribir la ecuación de velocidad, interpretar los órdenes parciales y el orden total, y deducir las unidades de la constante de velocidad.</li>
+<li>Obtener los órdenes de reacción y la constante con el método de las velocidades iniciales.</li>
+<li>Distinguir reacciones elementales y complejas, y relacionar la velocidad con la etapa lenta del mecanismo.</li>
+<li>Explicar cómo ocurren las reacciones con la teoría de colisiones y la del estado de transición, y dibujar e interpretar diagramas de energía.</li>
+<li>Razonar cómo influyen la temperatura, la concentración, la presión, la naturaleza y el estado de los reactivos y los catalizadores en la velocidad.</li>
+</ul>
+</section>
+
+<h1 class="ap" data-num="1" id="s-1-cinetica-quimica"><span class="num">1</span> Cinética química</h1><h2 data-num="1.1" id="s-1-1-introduccion"><span class="num">1.1</span> Introducción</h2><p class="corto">Una reacción química se conoce por completo cuando se responden tres preguntas: <strong>cuánto</strong> se obtiene, <strong>qué energía</strong> se intercambia y si ocurre sola, y <strong>con qué rapidez</strong> transcurre. A cada una le corresponde una parte de la química:</p>
+<ul>
+<li><strong>Estequiometría</strong> (balance de masa): calcula las cantidades de reactivos y productos que intervienen en la reacción.</li>
+<li><strong>Termodinámica</strong> (balance de energía y espontaneidad): estudia la energía que se intercambia y predice si un proceso puede ocurrir por sí solo. Como vimos en el tema 4, a <i>P</i> y <i>T</i> constantes un proceso es espontáneo si Δ<i>G</i> = Δ<i>H</i> − <i>T</i> · Δ<i>S</i> &lt; 0.</li>
+<li><strong>Cinética</strong>: estudia la velocidad de la reacción y lo que influye en ella.</li>
+</ul>
+<p>La termodinámica nos dice si una reacción <strong>puede</strong> ocurrir, pero no cuánto tiempo tardará: el tiempo no aparece en ninguna de sus magnitudes. Sin embargo, en la industria y en los seres vivos el tiempo es decisivo. Un proceso que tarda años en dar producto no es rentable, y una reacción del metabolismo que fuese demasiado lenta no serviría para mantener la vida.</p>
+<h2 data-num="1.2" id="s-1-2-objetivos-de-la-cinetica"><span class="num">1.2</span> Objetivos de la cinética</h2>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Cinética química</p><p class="corto">Rama de la química que estudia la velocidad a la que transcurren las reacciones químicas, los mecanismos por los que ocurren y los factores que influyen en ellas.</p></div>
+<p class="corto">La cinética introduce, por tanto, la variable <strong>tiempo</strong>. Sus objetivos son:</p>
+<ul class="lista-junta">
+<li><strong>Medir</strong> la velocidad de las reacciones químicas.</li>
+<li><strong>Estudiar los mecanismos</strong>: las etapas por las que los reactivos se transforman en productos.</li>
+<li><strong>Analizar los factores</strong> que influyen en la velocidad, para poder acelerar las reacciones que nos interesan y frenar las que no.</li>
+</ul>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 1</span><p class="corto"><strong>Controlar la velocidad en la vida diaria.</strong></p><ul class="lista-junta lista-junta"><li>En verano los alimentos se estropean antes: las reacciones de descomposición son más rápidas a temperatura alta. El frigorífico las frena.</li></ul><ul class="lista-junta lista-junta">
+<li>En el congelador, a −18 °C, esas reacciones son tan lentas que los alimentos se conservan durante meses.</li>
+<li>Los antioxidantes y las pinturas protectoras retrasan la oxidación de los metales.</li></ul></div>
+<p class="corto">Las velocidades de las reacciones son muy distintas: unas terminan en nanosegundos (una explosión) y otras tardan millones de años (la formación del petróleo). Y la velocidad <strong>no depende de la espontaneidad</strong>: una reacción puede tener Δ<i>G</i> muy negativo y ser lentísima.</p>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 2</span><p class="corto"><strong>¿Por qué los cereales no arden solos en el granero?</strong></p><p class="corto">La oxidación de los cereales con el oxígeno del aire para dar CO<sub>2</sub> y H<sub>2</sub>O es espontánea (Δ<i>G</i> &lt; 0). Pero a temperatura ambiente es tan lenta que no se aprecia: termodinámicamente es posible, cinéticamente está «bloqueada». Por suerte para agricultores y consumidores.</p></div>
+<aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=1.2"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-1_2.svg"/></a><div><p class="tit corto">Actividades interactivas · 1.2</p><ul class="lista-junta"><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-01">Test · Termodinámica y cinética</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-02">Parejas · ¿Quién responde a qué?</a></li></ul></div></aside>
+<h1 class="ap" data-num="2" id="s-2-velocidad-de-reaccion"><span class="num">2</span> Velocidad de reacción</h1><h2 data-num="2.1" id="s-2-1-concepto-de-velocidad-de-reaccion"><span class="num">2.1</span> Concepto de velocidad de reacción</h2><p class="corto">Unas reacciones ocurren casi al instante a temperatura ambiente (la precipitación del AgCl al mezclar dos disoluciones) y otras, en las mismas condiciones, muy despacio (la oxidación del hierro). Para comparar «rápida» y «lenta» con números necesitamos definir la velocidad.</p>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Velocidad de reacción</p><p class="corto">Variación de la concentración de un reactivo o de un producto por unidad de tiempo.</p></div>
+<p class="corto">Imagina la reacción A → B. Al principio solo hay moléculas de A (en negro); con el tiempo, A disminuye y aparece B (en rojo):</p>
+<figure><img alt="Moléculas de A que se transforman en B en tres instantes" src="/temas/2bach-quim-t05/img/esferas.svg" style="width:118mm"/><figcaption>La reacción A → B en tres instantes: A desaparece al mismo ritmo al que se forma B.</figcaption></figure>
+<p class="corto">Si representamos la concentración de cada sustancia frente al tiempo, la de A baja y la de B sube. Las curvas no son rectas: al principio cambian deprisa y después cada vez más despacio, porque la velocidad depende de cuánto reactivo queda. La forma exacta de las curvas depende de cada reacción.</p>
+<figure><img alt="Concentración de A y de B frente al tiempo, con la secante y la tangente" src="/temas/2bach-quim-t05/img/conc-tiempo.svg" style="width:130mm"/><figcaption>La pendiente de la secante es la velocidad media en un intervalo; la de la tangente, la velocidad en un instante.</figcaption></figure>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 3</span><p class="corto"><strong>En la síntesis del amoniaco, N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) → 2 NH<sub>3</sub>(g), se han medido estas concentraciones (mol/L). Calcula la rapidez con que cambia la concentración de cada sustancia en el primer minuto.</strong></p>
+<table class="mcr-tabla junta"><thead><tr><th class="c"><i>t</i> (s)</th><th class="c">[N<sub>2</sub>]</th><th class="c">[H<sub>2</sub>]</th><th class="c">[NH<sub>3</sub>]</th></tr></thead>
+<tr><td class="c">0</td><td class="c">0,50</td><td class="c">0,50</td><td class="c">0,00</td></tr>
+<tr><td class="c">60</td><td class="c">0,40</td><td class="c">0,20</td><td class="c">0,20</td></tr></table>
+<table class="ecs junta"><tr><td>Δ[N<sub>2</sub>]/Δ<i>t</i> = (0,40 − 0,50)/60 = −1,67 · 10<sup>−3</sup> mol · L<sup>−1</sup> · s<sup>−1</sup></td><td class="dh"></td></tr><tr><td>Δ[H<sub>2</sub>]/Δ<i>t</i> = (0,20 − 0,50)/60 = −5,00 · 10<sup>−3</sup> mol · L<sup>−1</sup> · s<sup>−1</sup></td><td class="dh"></td></tr><tr><td>Δ[NH<sub>3</sub>]/Δ<i>t</i> = (0,20 − 0)/60 = +3,33 · 10<sup>−3</sup> mol · L<sup>−1</sup> · s<sup>−1</sup></td><td class="dh"></td></tr></table>
+<p class="corto">Observa tres cosas: el resultado es <strong>negativo</strong> para los reactivos (desaparecen) y <strong>positivo</strong> para el producto (se forma); es <strong>distinto</strong> para cada sustancia, porque por cada mol de N<sub>2</sub> reaccionan 3 de H<sub>2</sub> y se forman 2 de NH<sub>3</sub>; y es un valor <strong>medio</strong> en esos 60 s, ya que la velocidad cambia con el tiempo.</p></div>
+<h2 data-num="2.2" id="s-2-2-expresion-de-la-velocidad"><span class="num">2.2</span> Expresión de la velocidad</h2><p class="corto">Para que la velocidad de una reacción sea un único número, positivo y el mismo se mida con la sustancia que se mida, se adoptan estos convenios:</p>
+<ul>
+<li><strong>Unidades:</strong> la concentración en mol · L<sup>−1</sup> y el tiempo en segundos, así que la velocidad se expresa en <strong>mol · L<sup>−1</sup> · s<sup>−1</sup></strong>.</li>
+<li><strong>Signo:</strong> la velocidad es siempre positiva. Si se calcula con un reactivo, cuya concentración disminuye (Δ[R] &lt; 0), se pone un signo menos delante; si se calcula con un producto, signo más.</li>
+<li><strong>Coeficientes:</strong> se divide entre el coeficiente estequiométrico de la sustancia en la ecuación ajustada. Así el resultado no depende de la sustancia elegida.</li>
+</ul>
+<p class="corto">Para la reacción general <i>a</i> A + <i>b</i> B → <i>c</i> C + <i>d</i> D, la <strong>velocidad media</strong> en un intervalo de tiempo es:</p>
+<p class="formula corto"><i>v</i><sub>media</sub> = − (1/<i>a</i>) · Δ[A]/Δ<i>t</i> = − (1/<i>b</i>) · Δ[B]/Δ<i>t</i> = (1/<i>c</i>) · Δ[C]/Δ<i>t</i> = (1/<i>d</i>) · Δ[D]/Δ<i>t</i></p>
+<p class="corto">Si el intervalo se hace cada vez más pequeño (Δ<i>t</i> → 0), el cociente se convierte en una derivada y obtenemos la <strong>velocidad instantánea</strong>, que es la pendiente de la tangente a la curva concentración–tiempo:</p>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Fórmula</span><p class="mcr-caja__termino corto">Velocidad instantánea de reacción</p><p class="formula corto"><i>v</i> = − (1/<i>a</i>) · d[A]/d<i>t</i> = − (1/<i>b</i>) · d[B]/d<i>t</i> = (1/<i>c</i>) · d[C]/d<i>t</i> = (1/<i>d</i>) · d[D]/d<i>t</i></p></div>
+<ul class="leyenda lista-junta"><li>El signo − de los reactivos compensa que su concentración disminuya; el resultado siempre es positivo.</li>
+<li>El reactivo que <strong>se consume más deprisa</strong> es el de mayor coeficiente estequiométrico. En el ejemplo 3, el H<sub>2</sub> desaparece tres veces más rápido que el N<sub>2</sub>, y el NH<sub>3</sub> se forma el doble de rápido que desaparece el N<sub>2</sub>.</li></ul>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 4</span><p class="corto"><strong>Para la reacción 2 A + B → C se han obtenido estos datos. Calcula la velocidad media de la reacción entre 0 y 10 s y entre 6 y 10 s.</strong></p>
+<table class="mcr-tabla junta"><thead><tr><th><i>t</i> (s)</th><th class="c">0</th><th class="c">2</th><th class="c">4</th><th class="c">6</th><th class="c">8</th><th class="c">10</th></tr></thead>
+<tr><td class="fila">[A] (mol/L)</td><td class="c">2,00</td><td class="c">1,05</td><td class="c">0,75</td><td class="c">0,59</td><td class="c">0,48</td><td class="c">0,41</td></tr>
+<tr><td class="fila">[B] (mol/L)</td><td class="c">1,00</td><td class="c">0,53</td><td class="c">0,37</td><td class="c">0,29</td><td class="c">0,24</td><td class="c">0,21</td></tr></table>
+<p class="corto">Usamos el reactivo B (coeficiente 1), con signo menos porque es un reactivo:</p>
+<table class="ecs junta"><tr><td>0 → 10 s:</td><td class="dh"><i>v</i> = − (1/1) · (0,21 − 1,00)/(10 − 0) = 0,079 mol · L<sup>−1</sup> · s<sup>−1</sup></td></tr><tr><td>6 → 10 s:</td><td class="dh"><i>v</i> = − (1/1) · (0,21 − 0,29)/(10 − 6) = 0,020 mol · L<sup>−1</sup> · s<sup>−1</sup></td></tr></table>
+<p class="corto">Con A sale lo mismo si dividimos entre su coeficiente: − (1/2) · (0,41 − 2,00)/10 = 0,080 mol · L<sup>−1</sup> · s<sup>−1</sup>. La velocidad es menor en el segundo intervalo porque queda menos reactivo.</p></div>
+<aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=2.2"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-2_2.svg"/></a><div><p class="tit corto">Actividades interactivas · 2.2</p><ul class="lista-junta"><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-03">Huecos · Convenios de la velocidad</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-04">Número · Velocidad de formación</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-05">Test · ¿Quién se consume más deprisa?</a></li></ul></div></aside>
+<section class="practica"><p class="practica__tit mcr-etiqueta corto">Práctica · Ejercicios 1 a 3</p><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">1</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">En la descomposición 2 N<sub>2</sub>O<sub>5</sub>(g) → 4 NO<sub>2</sub>(g) + O<sub>2</sub>(g), la concentración de N<sub>2</sub>O<sub>5</sub> pasa de 0,0200 mol/L a 0,0169 mol/L en 100 s.</p><ol class="lista-junta"><li><span class="let">a)</span>Calcula la velocidad media de la reacción en ese intervalo.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">1</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Calcula con qué rapidez se forman el NO<sub>2</sub> y el O<sub>2</sub>.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">2</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Para la descomposición del agua oxigenada, 2 H<sub>2</sub>O<sub>2</sub>(aq) → 2 H<sub>2</sub>O(l) + O<sub>2</sub>(g), se han medido estos datos:</p><table class="mcr-tabla junta"><thead><tr><th class="c"><i>t</i> (min)</th><th class="c">0</th><th class="c">10</th><th class="c">20</th></tr></thead><tr><td class="c">[H<sub>2</sub>O<sub>2</sub>] (mol/L)</td><td class="c">0,80</td><td class="c">0,56</td><td class="c">0,40</td></tr></table><ol class="lista-junta"><li><span class="let">a)</span>Calcula la velocidad media de la reacción, en mol · L<sup>−1</sup> · s<sup>−1</sup>, entre 0 y 10 min y entre 10 y 20 min.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">2</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Explica por qué la velocidad no es la misma en los dos intervalos.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">3</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">En la oxidación del amoniaco, 4 NH<sub>3</sub>(g) + 5 O<sub>2</sub>(g) → 4 NO(g) + 6 H<sub>2</sub>O(g), en un instante dado el NH<sub>3</sub> desaparece a razón de 0,20 mol · L<sup>−1</sup> · s<sup>−1</sup>.</p><ol class="lista-junta"><li><span class="let">a)</span>¿Con qué rapidez desaparece el O<sub>2</sub>?</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">3</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>¿Con qué rapidez se forma el agua?</li><li><span class="let">c)</span>¿Cuál es la velocidad de la reacción?</li></ol></div></div></div></section>
+<h1 class="ap" data-num="3" id="s-3-ecuacion-de-velocidad"><span class="num">3</span> Ecuación de velocidad</h1><h2 data-num="3.1" id="s-3-1-ecuacion-de-velocidad"><span class="num">3.1</span> Ecuación de velocidad</h2><p class="corto">La velocidad de una reacción homogénea depende de las concentraciones de los reactivos y de la temperatura. La relación entre la velocidad y las concentraciones se expresa con una ecuación que se obtiene <strong>experimentalmente</strong>.</p>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Ecuación de velocidad (o ley de velocidad)</p><p class="corto">Expresión matemática que relaciona la velocidad de una reacción con las concentraciones de los reactivos. Para <i>a</i> A + <i>b</i> B → productos:</p><p class="formula corto"><i>v</i> = <i>k</i> · [A]<sup>α</sup> · [B]<sup>β</sup></p></div>
+<ul class="leyenda lista-junta"><li>[A] y [B] son las concentraciones molares de los <strong>reactivos</strong>, en mol/L. En la ecuación de velocidad no aparecen los productos.</li>
+<li>α y β son los <strong>órdenes parciales</strong> respecto de A y de B. Se determinan experimentalmente; pueden coincidir o no con los coeficientes <i>a</i> y <i>b</i>.</li>
+<li><i>k</i> es la <strong>constante de velocidad</strong> o constante cinética.</li></ul>
+<p class="corto">La constante de velocidad tiene estas propiedades:</p>
+<ul>
+<li><strong>Depende de la temperatura</strong> (y de la presencia de catalizadores), como veremos con la ecuación de Arrhenius: casi siempre aumenta al subir la temperatura.</li>
+<li><strong>No depende de las concentraciones</strong>. Por eso, a una temperatura dada, <i>k</i> es la misma aunque cambien las cantidades de reactivos; la que cambia es <i>v</i>.</li>
+<li>Su valor <strong>se determina experimentalmente</strong>.</li>
+<li><strong>Sus unidades dependen del orden total</strong> de la reacción: son las necesarias para que <i>v</i> salga en mol · L<sup>−1</sup> · s<sup>−1</sup>.</li>
+</ul>
+<aside class="mcr-nota"><span class="mcr-etiqueta">¡Lo preguntan mucho!</span><p class="corto">La velocidad <i>v</i> tiene siempre las mismas unidades, mol · L<sup>−1</sup> · s<sup>−1</sup>, sea cual sea el orden. Las que cambian con el orden son las de <i>k</i>.</p></aside>
+<h2 data-num="3.2" id="s-3-2-ordenes-de-reaccion"><span class="num">3.2</span> Órdenes de reacción</h2><p class="corto">Los órdenes parciales indican <strong>cuánto depende</strong> la velocidad de la concentración de cada reactivo.</p>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Orden parcial y orden total</p><p class="corto">El <strong>orden parcial</strong> respecto de un reactivo es el exponente al que está elevada su concentración en la ecuación de velocidad. El <strong>orden total</strong> (u orden de la reacción) es la suma de los órdenes parciales: <i>n</i> = α + β.</p></div>
+<p class="corto">Los órdenes parciales más habituales son 0, 1 y 2, aunque pueden ser fraccionarios. Su significado se ve bien si pensamos qué pasa al duplicar la concentración de un reactivo:</p>
+<ul class="lista-junta">
+<li><strong>Orden 0</strong> (<i>v</i> = <i>k</i>): la velocidad <strong>no depende</strong> de [A]. Aunque se duplique [A], la velocidad no cambia.</li>
+<li><strong>Orden 1</strong> (<i>v</i> = <i>k</i> · [A]): la velocidad es <strong>proporcional</strong> a [A]. Si [A] se duplica, <i>v</i> se duplica.</li>
+<li><strong>Orden 2</strong> (<i>v</i> = <i>k</i> · [A]<sup>2</sup>): la velocidad depende del <strong>cuadrado</strong> de [A]. Si [A] se duplica, <i>v</i> se multiplica por 2<sup>2</sup> = 4.</li>
+</ul>
+<figure><img alt="Velocidad frente a concentración para órdenes 0, 1 y 2" src="/temas/2bach-quim-t05/img/ordenes.svg" style="width:124mm"/><figcaption>Cómo cambia la velocidad con la concentración de un reactivo según su orden parcial.</figcaption></figure>
+<p class="corto">En general, si la concentración de un reactivo se multiplica por un factor <i>f</i> y la velocidad se multiplica por <i>f</i><sup> <i>x</i></sup>, el orden respecto de ese reactivo es <i>x</i>.</p>
+<p>¿Por qué los órdenes no tienen que coincidir con los coeficientes? Porque una misma reacción puede escribirse con coeficientes distintos (por ejemplo, multiplicando toda la ecuación por 2) y eso no puede cambiar la rapidez del proceso real. Los coeficientes solo indican la <strong>proporción</strong> en que reaccionan las sustancias; los órdenes dependen de <strong>cómo</strong> ocurre la reacción a escala molecular, es decir, de su mecanismo.</p>
+<div class="mcr-caja mcr-caja--atencion"><span class="mcr-caja__etiqueta mcr-etiqueta"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3 2 21h20L12 3z"></path><path d="M12 10v5M12 18h.01"></path></svg>Órdenes y coeficientes</span><p class="corto">Los órdenes parciales solo coinciden con los coeficientes estequiométricos si la reacción es <strong>elemental</strong> (ocurre en una sola etapa). Si el enunciado no lo dice, no se pueden suponer: hay que obtenerlos de los datos (órdenes dados, unidades de <i>k</i> o tabla de experimentos).</p></div>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 5</span><p class="corto"><strong>Para la reacción A → B + C, a cierta temperatura, <i>k</i> = 1,5 · 10<sup>−3</sup> L · mol<sup>−1</sup> · s<sup>−1</sup>. a) Escribe la ecuación de velocidad e indica el orden. b) Calcula la velocidad cuando [A] = 0,242 mol/L.</strong></p><ol class="lista-junta" type="a"><li>La ecuación tiene la forma <i>v</i> = <i>k</i> · [A]<sup>α</sup>. Despejamos [A]<sup>α</sup> y sustituimos solo las unidades:
+<p class="formula corto">[A]<sup>α</sup> = <i>v</i>/<i>k</i> → (mol · L<sup>−1</sup> · s<sup>−1</sup>)/(L · mol<sup>−1</sup> · s<sup>−1</sup>) = mol<sup>2</sup> · L<sup>−2</sup> = (mol/L)<sup>2</sup></p>
+Por tanto α = 2: la reacción es de <strong>segundo orden</strong> y <i>v</i> = <i>k</i> · [A]<sup>2</sup>. Como el coeficiente de A es 1, la reacción no es elemental.</li></ol>
+<ol class="lista-junta" start="2" type="a">
+<li>A la misma temperatura, <i>k</i> no cambia:
+<p class="formula corto"><i>v</i> = 1,5 · 10<sup>−3</sup> · (0,242)<sup>2</sup> = <strong>8,78 · 10<sup>−5</sup> mol · L<sup>−1</sup> · s<sup>−1</sup></strong></p></li></ol></div>
+<div class="mcr-caja mcr-caja--ejemplo larga"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 6</span><p class="corto"><strong>La reacción 2 N<sub>2</sub>(g) + O<sub>2</sub>(g) → 2 N<sub>2</sub>O(g) es, en ciertas condiciones, de segundo orden respecto al N<sub>2</sub> y de primer orden respecto al O<sub>2</sub>. a) Escribe la ecuación de velocidad. b) Indica el orden total. c) Deduce las unidades de <i>k</i>.</strong></p><ol class="lista-junta" type="a"><li><i>v</i> = <i>k</i> · [N<sub>2</sub>]<sup>2</sup> · [O<sub>2</sub>]</li>
+<li>Orden total = 2 + 1 = <strong>3</strong>.</li>
+<li>Despejamos <i>k</i> y sustituimos las unidades:
+<p class="formula corto"><i>k</i> = <i>v</i>/([N<sub>2</sub>]<sup>2</sup> · [O<sub>2</sub>]) → (mol · L<sup>−1</sup> · s<sup>−1</sup>)/(mol<sup>3</sup> · L<sup>−3</sup>) = <strong>L<sup>2</sup> · mol<sup>−2</sup> · s<sup>−1</sup></strong></p></li></ol>
+</div>
+<div class="mcr-caja mcr-caja--ejemplo larga"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 7</span><p class="corto"><strong>Para la reacción X + Y → productos, <i>v</i> = <i>k</i> · [X] · [Y]. a) Indica los órdenes parciales y el total. b) Calcula <i>k</i> si con [X] = 0,15 mol/L y [Y] = 0,75 mol/L la velocidad es 4,2 · 10<sup>−3</sup> mol · L<sup>−1</sup> · s<sup>−1</sup>. c) Calcula la velocidad cuando [X] = [Y] = 0,50 mol/L. d) ¿Es constante la velocidad durante la reacción?</strong></p><ol class="lista-junta" type="a"><li>Orden 1 respecto de X, orden 1 respecto de Y; orden total <strong>2</strong>.</li></ol>
+<ol class="lista-junta" start="2" type="a">
+<li><p class="formula corto"><i>k</i> = <i>v</i>/([X] · [Y]) = 4,2 · 10<sup>−3</sup>/(0,15 · 0,75) = <strong>3,7 · 10<sup>−2</sup> L · mol<sup>−1</sup> · s<sup>−1</sup></strong></p></li>
+<li>A la misma temperatura <i>k</i> no cambia: <i>v</i> = 3,73 · 10<sup>−2</sup> · 0,50 · 0,50 = <strong>9,3 · 10<sup>−3</sup> mol · L<sup>−1</sup> · s<sup>−1</sup></strong>.</li>
+<li>No. A medida que avanza la reacción, X e Y se consumen y sus concentraciones disminuyen; como <i>v</i> depende de ellas, la velocidad también disminuye.</li></ol></div>
+<div class="mcr-caja mcr-caja--ejemplo larga"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 8</span><p class="corto"><strong>Para la reacción A + 2 B → C, <i>v</i> = <i>k</i> · [A]<sup>2</sup> · [B]. a) ¿Dependen las unidades de la velocidad del orden total? b) ¿Qué les ocurre a la velocidad y a la constante si el volumen del recipiente se reduce a la tercera parte, a temperatura constante?</strong></p><ol class="lista-junta" type="a"><li>No. La velocidad es una variación de concentración por unidad de tiempo, así que siempre se mide en mol · L<sup>−1</sup> · s<sup>−1</sup>. Las que dependen del orden son las unidades de <i>k</i>.</li></ol>
+<ol class="lista-junta" start="2" type="a">
+<li>Si el volumen se divide entre 3, con los mismos moles las concentraciones se multiplican por 3:
+<p class="formula corto"><i>v</i>′ = <i>k</i> · (3 [A])<sup>2</sup> · (3 [B]) = 9 · 3 · <i>k</i> · [A]<sup>2</sup> · [B] = 27 <i>v</i></p>
+La velocidad se hace <strong>27 veces mayor</strong>. La constante <strong>no cambia</strong>: solo depende de la temperatura, que no varía.</li></ol></div>
+<p class="tabla-tit corto">Unidades de la constante de velocidad según el orden total</p><table class="mcr-tabla junta"><thead><tr><th>Orden total</th><th>Ecuación (ejemplo)</th><th>Unidades de <i>k</i></th></tr></thead>
+<tr><td class="fila">0</td><td><i>v</i> = <i>k</i></td><td>mol · L<sup>−1</sup> · s<sup>−1</sup></td></tr>
+<tr><td class="fila">1</td><td><i>v</i> = <i>k</i> · [A]</td><td>s<sup>−1</sup></td></tr>
+<tr><td class="fila">2</td><td><i>v</i> = <i>k</i> · [A]<sup>2</sup> o <i>v</i> = <i>k</i> · [A] · [B]</td><td>L · mol<sup>−1</sup> · s<sup>−1</sup></td></tr>
+<tr><td class="fila">3</td><td><i>v</i> = <i>k</i> · [A]<sup>2</sup> · [B]</td><td>L<sup>2</sup> · mol<sup>−2</sup> · s<sup>−1</sup></td></tr>
+<tr><td class="fila"><i>n</i></td><td><i>v</i> = <i>k</i> · [A]<sup><i>n</i></sup></td><td>L<sup><i>n</i>−1</sup> · mol<sup>1−<i>n</i></sup> · s<sup>−1</sup></td></tr></table>
+<h2 data-num="3.3" id="s-3-3-metodo-de-las-velocidades-iniciales"><span class="num">3.3</span> Método de las velocidades iniciales</h2><p class="corto">Los órdenes se obtienen con experimentos. El método más sencillo es el de las <strong>velocidades iniciales</strong>: se hace la reacción varias veces cambiando las concentraciones iniciales y se mide la velocidad al principio (cuando apenas ha cambiado la composición).</p>
+<p class="corto">Para hallar el orden respecto de A se comparan dos experimentos en los que <strong>solo cambia [A]</strong> y las demás concentraciones son iguales. Así, el cambio de velocidad se debe solo a A. Después se repite con B.</p>
+<div class="mcr-caja mcr-caja--atencion"><span class="mcr-caja__etiqueta mcr-etiqueta"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M12 3 2 21h20L12 3z"></path><path d="M12 10v5M12 18h.01"></path></svg>Cómo hallar los órdenes</span><ol class="lista-junta">
+<li>Escribe la ecuación general: <i>v</i> = <i>k</i> · [A]<sup>α</sup> · [B]<sup>β</sup>.</li>
+<li>Busca dos experimentos con la <strong>misma [B]</strong>. Divide sus ecuaciones: <i>k</i> y [B]<sup>β</sup> se simplifican y queda <i>v</i><sub>2</sub>/<i>v</i><sub>1</sub> = ([A]<sub>2</sub>/[A]<sub>1</sub>)<sup>α</sup>. Despeja α.</li>
+<li>Haz lo mismo con dos experimentos de <strong>igual [A]</strong> para obtener β.</li>
+<li>Con los órdenes, sustituye los datos de <strong>cualquier</strong> experimento para calcular <i>k</i>, con sus unidades.</li></ol></div>
+<div class="mcr-caja mcr-caja--ejemplo larga"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 9</span><p class="corto"><strong>Con los datos de la tabla, determina los órdenes parciales y la ecuación de velocidad de la reacción 2 NO(g) + O<sub>2</sub>(g) → 2 NO<sub>2</sub>(g).</strong></p>
+<table class="mcr-tabla junta"><thead><tr><th class="c">Exp.</th><th class="c">[NO]<sub>0</sub> (mol/L)</th><th class="c">[O<sub>2</sub>]<sub>0</sub> (mol/L)</th><th class="c"><i>v</i><sub>0</sub> (mol · L<sup>−1</sup> · s<sup>−1</sup>)</th></tr></thead>
+<tr><td class="c">1</td><td class="c">0,020</td><td class="c">0,010</td><td class="c">0,028</td></tr>
+<tr><td class="c">2</td><td class="c">0,020</td><td class="c">0,020</td><td class="c">0,056</td></tr>
+<tr><td class="c">3</td><td class="c">0,040</td><td class="c">0,020</td><td class="c">0,224</td></tr></table>
+<p class="corto">La ecuación tiene la forma <i>v</i> = <i>k</i> · [NO]<sup>α</sup> · [O<sub>2</sub>]<sup>β</sup>.</p>
+<p class="corto"><strong>Orden respecto del NO.</strong> En los experimentos 2 y 3 la [O<sub>2</sub>] es la misma (0,020). [NO] se duplica (de 0,020 a 0,040) y la velocidad se multiplica por 4 (de 0,056 a 0,224). Como 4 = 2<sup>2</sup>, α = 2. Dividiendo las ecuaciones:</p>
+<p class="formula corto">0,224/0,056 = <i>k</i> · (0,040)<sup>α</sup> · (0,020)<sup>β</sup> / [<i>k</i> · (0,020)<sup>α</sup> · (0,020)<sup>β</sup>] → 4 = 2<sup>α</sup> → <strong>α = 2</strong></p>
+<p class="corto"><strong>Orden respecto del O<sub>2</sub>.</strong> En los experimentos 1 y 2 la [NO] es la misma (0,020). [O<sub>2</sub>] se duplica y la velocidad también se duplica (de 0,028 a 0,056): β = 1.</p>
+<p class="formula corto">0,056/0,028 = (0,020/0,010)<sup>β</sup> → 2 = 2<sup>β</sup> → <strong>β = 1</strong></p>
+<p class="mcr-resultado corto"><i>v</i> = <i>k</i> · [NO]<sup>2</sup> · [O<sub>2</sub>]   (orden total 3)</p></div>
+<div class="mcr-caja mcr-caja--ejemplo larga"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 10</span><p class="corto"><strong>Para la reacción A + B → C + D se han obtenido estos datos. Determina: a) los órdenes parciales y el total; b) la ecuación de velocidad; c) el valor de <i>k</i>.</strong></p>
+<table class="mcr-tabla junta"><thead><tr><th class="c">Exp.</th><th class="c">[A]<sub>0</sub> (mol/L)</th><th class="c">[B]<sub>0</sub> (mol/L)</th><th class="c"><i>v</i><sub>0</sub> (mol · L<sup>−1</sup> · s<sup>−1</sup>)</th></tr></thead>
+<tr><td class="c">1</td><td class="c">0,010</td><td class="c">0,010</td><td class="c">1,8 · 10<sup>−4</sup></td></tr>
+<tr><td class="c">2</td><td class="c">0,010</td><td class="c">0,020</td><td class="c">7,2 · 10<sup>−4</sup></td></tr>
+<tr><td class="c">3</td><td class="c">0,020</td><td class="c">0,010</td><td class="c">1,8 · 10<sup>−4</sup></td></tr></table>
+<ol type="a"><li>Experimentos 1 y 2 (igual [A]): [B] se duplica y <i>v</i> se multiplica por 4 → orden <strong>2 respecto de B</strong>. Experimentos 1 y 3 (igual [B]): [A] se duplica y <i>v</i> no cambia → orden <strong>0 respecto de A</strong>. Orden total: 0 + 2 = <strong>2</strong>.</li>
+<li><i>v</i> = <i>k</i> · [A]<sup>0</sup> · [B]<sup>2</sup> = <i>k</i> · [B]<sup>2</sup>. La concentración de A no influye en la velocidad.</li>
+<li>Con el experimento 1:
+<p class="formula corto"><i>k</i> = <i>v</i>/[B]<sup>2</sup> = 1,8 · 10<sup>−4</sup>/(0,010)<sup>2</sup> = <strong>1,8 L · mol<sup>−1</sup> · s<sup>−1</sup></strong></p></li></ol></div>
+<aside class="mcr-nota"><span class="mcr-etiqueta">En la web</span><p class="corto">Comprueba cómo cambia la velocidad con la concentración y la temperatura en la simulación «Reacciones y velocidad» de PhET: <a class="enlace-web" href="https://phet.colorado.edu/es/simulations/reactions-and-rates">phet.colorado.edu/es/simulations/reactions-and-rates</a></p></aside>
+<aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=3.3"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-3_3.svg"/></a><div><p class="tit corto">Actividades interactivas · 3.3</p><ul class="lista-junta"><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-10">Tabla · Velocidades iniciales</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-11">Ordenar · Método de las velocidades iniciales</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-12">Número · Constante de velocidad</a></li></ul></div></aside>
+<section class="practica"><p class="practica__tit mcr-etiqueta corto">Práctica · Ejercicios 4 a 11</p><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">4</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Para la reacción A + 2 B + C → productos, la ecuación de velocidad es <i>v</i> = <i>k</i> · [A]<sup>2</sup> · [B]<sup>2</sup>.</p><ol class="lista-junta"><li><span class="let">a)</span>Indica los órdenes parciales y el orden total.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">4</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Deduce las unidades de la constante de velocidad.</li><li><span class="let">c)</span>¿Influye la temperatura en la velocidad de la reacción?</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">5</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">La ecuación de velocidad de cierta reacción es <i>v</i> = <i>k</i> · [A]<sup>2</sup> · [B]. Razona si son verdaderas o falsas:</p><ol class="lista-junta"><li><span class="let">a)</span>La unidad de la constante de velocidad es mol<sup>−1</sup> · L · s.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">5</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Si se duplican las concentraciones de A y de B, en las mismas condiciones, la velocidad se hace ocho veces mayor.</li><li><span class="let">c)</span>Si el volumen se reduce a la mitad, la velocidad se hace ocho veces mayor.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">6</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">La reacción en fase gaseosa 2 A + B → 3 C es una reacción elemental.</p><ol class="lista-junta"><li><span class="let">a)</span>Escribe su ecuación de velocidad.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">6</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Deduce las unidades de la constante de velocidad.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">7</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">A 25 °C, una reacción A(g) → B(g) + C(g) tiene una constante de velocidad <i>k</i> = 5 · 10<sup>12</sup> L · mol<sup>−1</sup> · s<sup>−1</sup>. Razona:</p><ol class="lista-junta"><li><span class="let">a)</span>¿Cuál es el orden total de la reacción? Escribe la ecuación de velocidad.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">7</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>¿Se trata de una reacción elemental?</li><li><span class="let">c)</span>¿Qué unidades tendría la constante si la reacción fuera de orden 1?</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">8</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Dada la ecuación de velocidad <i>v</i> = <i>k</i> · [A] · [B]<sup>2</sup>, correspondiente a la reacción A + B → C, razona si son verdaderas o falsas:</p><ol class="lista-junta"><li><span class="let">a)</span>La constante <i>k</i> no depende de la temperatura.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">8</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>La reacción es de primer orden respecto de A y de B, y de segundo orden en total.</li><li><span class="let">c)</span>La velocidad de la reacción es constante mientras dura la reacción.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">9</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Razona si son verdaderas o falsas:</p><ol class="lista-junta"><li><span class="let">a)</span>La constante de velocidad de una reacción de primer orden se expresa en mol · L<sup>−1</sup> · s<sup>−1</sup>.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">9</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Las unidades de la velocidad de una reacción dependen de su orden total.</li><li><span class="let">c)</span>En la ecuación de Arrhenius, <i>k</i> = <i>A</i> · e<sup>−<i>E</i><sub>a</sub>/(<i>RT</i>)</sup>, la energía de activación no depende de la temperatura.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">10</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">La reacción 2 A + B → C tiene como ecuación de velocidad <i>v</i> = <i>k</i> · [A]<sup>2</sup> · [B]. Responde razonadamente:</p><ol class="lista-junta"><li><span class="let">a)</span>¿Cuál es el orden total de la reacción?</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">10</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Deduce las unidades de la constante de velocidad.</li><li><span class="let">c)</span>¿Se mantiene constante la velocidad durante la reacción?</li><li><span class="let">d)</span>¿Es la velocidad de desaparición de B igual a la de aparición de C?</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">11</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Para la reacción elemental CO(g) + Cl<sub>2</sub>(g) → COCl<sub>2</sub>(g), razona si son verdaderas o falsas:</p><ol class="lista-junta"><li><span class="let">a)</span>Su ecuación de velocidad es <i>v</i> = <i>k</i> · [CO] · [Cl<sub>2</sub>] · [COCl<sub>2</sub>].</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">11</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>La velocidad cambia a lo largo de la reacción.</li><li><span class="let">c)</span>La constante <i>k</i> no depende de la temperatura.</li><li><span class="let">d)</span>Si se duplica la concentración de Cl<sub>2</sub>, la velocidad se duplica.</li></ol></div></div></div></section>
+<section class="practica"><p class="practica__tit mcr-etiqueta corto">Práctica · Ejercicios 12 a 15</p><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">12</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Para la reacción A + B → C se han obtenido estos datos:</p><table class="mcr-tabla junta"><thead><tr><th class="c">Exp.</th><th class="c">[A]<sub>0</sub> (mol/L)</th><th class="c">[B]<sub>0</sub> (mol/L)</th><th class="c"><i>v</i><sub>0</sub> (mol · L<sup>−1</sup> · s<sup>−1</sup>)</th></tr></thead><tr><td class="c">1</td><td class="c">0,2</td><td class="c">0,2</td><td class="c">8 · 10<sup>−3</sup></td></tr><tr><td class="c">2</td><td class="c">0,6</td><td class="c">0,2</td><td class="c">24 · 10<sup>−3</sup></td></tr><tr><td class="c">3</td><td class="c">0,2</td><td class="c">0,4</td><td class="c">32 · 10<sup>−3</sup></td></tr></table><ol class="lista-junta"><li><span class="let">a)</span>Determina los órdenes parciales y la ecuación de velocidad.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">12</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Calcula la constante de velocidad.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">13</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Se estudia la reacción CO(g) + NO<sub>2</sub>(g) → CO<sub>2</sub>(g) + NO(g) a 280 °C y se obtienen estos datos:</p><table class="mcr-tabla junta"><thead><tr><th class="c">Exp.</th><th class="c">[CO]<sub>0</sub> (mol/L)</th><th class="c">[NO<sub>2</sub>]<sub>0</sub> (mol/L)</th><th class="c"><i>v</i><sub>0</sub> (mol · L<sup>−1</sup> · s<sup>−1</sup>)</th></tr></thead><tr><td class="c">1</td><td class="c">2 · 10<sup>−4</sup></td><td class="c">0,5 · 10<sup>−4</sup></td><td class="c">1,9 · 10<sup>−4</sup></td></tr><tr><td class="c">2</td><td class="c">2 · 10<sup>−4</sup></td><td class="c">1 · 10<sup>−4</sup></td><td class="c">3,8 · 10<sup>−4</sup></td></tr><tr><td class="c">3</td><td class="c">4 · 10<sup>−4</sup></td><td class="c">0,5 · 10<sup>−4</sup></td><td class="c">3,8 · 10<sup>−4</sup></td></tr></table><ol class="lista-junta"><li><span class="let">a)</span>Determina los órdenes parciales.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">13</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Calcula la constante de velocidad a 280 °C.</li><li><span class="let">c)</span>Calcula la velocidad inicial cuando la concentración de cada reactivo es 3 · 10<sup>−4</sup> mol/L.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">14</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Para la reacción A + B → productos se han obtenido estos datos:</p><table class="mcr-tabla junta"><thead><tr><th class="c">Exp.</th><th class="c">[A]<sub>0</sub> (mol/L)</th><th class="c">[B]<sub>0</sub> (mol/L)</th><th class="c"><i>v</i><sub>0</sub> (mol · L<sup>−1</sup> · s<sup>−1</sup>)</th></tr></thead><tr><td class="c">1</td><td class="c">0,10</td><td class="c">0,10</td><td class="c">2,0 · 10<sup>−3</sup></td></tr><tr><td class="c">2</td><td class="c">0,20</td><td class="c">0,10</td><td class="c">4,0 · 10<sup>−3</sup></td></tr><tr><td class="c">3</td><td class="c">0,20</td><td class="c">0,30</td><td class="c">3,6 · 10<sup>−2</sup></td></tr></table><ol class="lista-junta"><li><span class="let">a)</span>Determina los órdenes parciales y el total.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">14</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Calcula la constante de velocidad.</li><li><span class="let">c)</span>Calcula la velocidad cuando [A] = [B] = 0,050 mol/L.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">15</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Para la reacción 2 NO(g) + 2 H<sub>2</sub>(g) → N<sub>2</sub>(g) + 2 H<sub>2</sub>O(g) se han medido estas velocidades iniciales a cierta temperatura:</p><table class="mcr-tabla junta"><thead><tr><th class="c">Exp.</th><th class="c">[NO]<sub>0</sub> (mol/L)</th><th class="c">[H<sub>2</sub>]<sub>0</sub> (mol/L)</th><th class="c"><i>v</i><sub>0</sub> (mol · L<sup>−1</sup> · s<sup>−1</sup>)</th></tr></thead><tr><td class="c">1</td><td class="c">0,10</td><td class="c">0,10</td><td class="c">1,23 · 10<sup>−3</sup></td></tr><tr><td class="c">2</td><td class="c">0,10</td><td class="c">0,20</td><td class="c">2,46 · 10<sup>−3</sup></td></tr><tr><td class="c">3</td><td class="c">0,20</td><td class="c">0,10</td><td class="c">4,92 · 10<sup>−3</sup></td></tr></table><ol class="lista-junta"><li><span class="let">a)</span>Determina la ecuación de velocidad y el orden total.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">15</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Calcula la constante de velocidad con sus unidades.</li><li><span class="let">c)</span>Razona si la reacción puede ser elemental.</li></ol></div></div></div></section>
+<h1 class="ap" data-num="4" id="s-4-mecanismo-de-reaccion-y-molecularidad"><span class="num">4</span> Mecanismo de reacción y molecularidad</h1><h2 data-num="4.1" id="s-4-1-mecanismo-de-reaccion"><span class="num">4.1</span> Mecanismo de reacción</h2><p class="corto">Una ecuación química indica solo las sustancias iniciales y finales del proceso global. Pero la mayoría de las reacciones no ocurren en un solo paso, sino en varias <strong>etapas</strong> sencillas, en las que se forman y se consumen especies intermedias.</p>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Mecanismo de reacción</p><p class="corto">Conjunto de etapas sencillas, llamadas <strong>reacciones elementales</strong>, por las que transcurre una reacción a escala molecular. Se determina experimentalmente.</p></div>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 11</span><p class="corto"><strong>Reacciones parecidas, mecanismos distintos.</strong></p><p class="corto">La reacción del hidrógeno con el yodo se ha considerado tradicionalmente un ejemplo de reacción en una sola etapa:</p>
+<p class="formula corto">H<sub>2</sub>(g) + I<sub>2</sub>(g) → 2 HI(g)</p>
+<p class="corto">En cambio, la reacción análoga con el bromo, H<sub>2</sub>(g) + Br<sub>2</sub>(g) → 2 HBr(g), transcurre en varias etapas elementales (es una reacción en cadena):</p>
+<table class="mcr-tabla larga"><thead><tr><th class="c">Etapa</th><th>Reacción elemental</th><th>Papel</th></tr></thead>
+<tr><td class="c">1</td><td>Br<sub>2</sub> → 2 Br</td><td>Iniciación: se forman átomos de Br</td></tr>
+<tr><td class="c">2</td><td>Br + H<sub>2</sub> → HBr + H</td><td>Propagación (etapa <strong>lenta</strong>)</td></tr>
+<tr><td class="c">3</td><td>H + Br<sub>2</sub> → HBr + Br</td><td>Propagación (rápida)</td></tr>
+<tr><td class="c">4</td><td>H + HBr → H<sub>2</sub> + Br</td><td>Inhibición: el producto frena la reacción</td></tr>
+<tr><td class="c">5</td><td>2 Br → Br<sub>2</sub></td><td>Terminación</td></tr></table>
+<p class="corto">Los átomos H y Br son <strong>intermedios de reacción</strong>: se forman en unas etapas y se consumen en otras, y no aparecen en la ecuación global.</p></div>
+<p class="corto">Cada etapa tiene su propia velocidad y su propia ecuación de velocidad. Si una es mucho más lenta que las demás, limita la rapidez de todo el proceso, igual que el paso más estrecho de una carretera limita el tráfico: es la <strong>etapa limitante</strong> o determinante de la velocidad.</p>
+<figure><img alt="Diagrama de energía de una reacción en dos etapas con un intermedio" src="/temas/2bach-quim-t05/img/mecanismo.svg" style="width:88mm"/><figcaption>Reacción en dos etapas: cada una tiene su energía de activación; la de mayor barrera es la etapa lenta.</figcaption></figure>
+<p class="tabla-tit corto">Tabla resumen · Reacciones elementales y no elementales</p><table class="mcr-tabla resumen-prop"><thead><tr><th></th><th>Reacción elemental (simple)</th><th>Reacción no elemental (compleja)</th></tr></thead>
+<tr><td class="fila">Etapas</td><td>Una sola, representada por la propia ecuación</td><td>Varias, cada una con su ecuación química</td></tr>
+<tr><td class="fila">Intermedios de reacción</td><td>No hay</td><td>Sí: se forman y se consumen; no aparecen en la ecuación global, pero se pueden detectar</td></tr>
+<tr><td class="fila">Ecuación de velocidad</td><td>La de la única etapa</td><td>Cada etapa tiene la suya</td></tr>
+<tr><td class="fila">Órdenes parciales</td><td>Coinciden con los coeficientes estequiométricos</td><td>No tienen por qué coincidir</td></tr>
+<tr><td class="fila">Velocidad global</td><td>La de la única etapa</td><td>La fija la etapa más lenta (etapa limitante)</td></tr></table>
+<h2 data-num="4.2" id="s-4-2-molecularidad"><span class="num">4.2</span> Molecularidad</h2>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Molecularidad</p><p class="corto">Número de partículas de reactivo (átomos, moléculas o iones) que chocan e intervienen en una etapa elemental.</p></div>
+<p class="corto">Solo tiene sentido en las reacciones elementales: el orden es un dato experimental de la reacción global, mientras que la molecularidad describe lo que ocurre en un choque. Las etapas pueden ser:</p>
+<ul class="lista-junta">
+<li><strong>Unimoleculares:</strong> interviene una sola partícula (Br<sub>2</sub> → 2 Br).</li>
+<li><strong>Bimoleculares:</strong> chocan dos partículas (Br + H<sub>2</sub> → HBr + H). Son las más frecuentes.</li>
+<li><strong>Termoleculares:</strong> chocan tres a la vez. Son muy raras, porque es poco probable que tres partículas coincidan en el mismo punto al mismo tiempo.</li>
+</ul>
+<p class="corto">En una etapa elemental, la molecularidad coincide con el orden total de esa etapa: en Br + H<sub>2</sub> → HBr + H, <i>v</i> = <i>k</i> · [Br] · [H<sub>2</sub>], de orden 2.</p>
+<aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=4.2"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-4_2.svg"/></a><div><p class="tit corto">Actividades interactivas · 4.2</p><ul class="lista-junta"><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-13">Parejas · Elemental o no elemental</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-14">Huecos · Mecanismo y molecularidad</a></li></ul></div></aside>
+<h1 class="ap" data-num="5" id="s-5-teorias-de-las-reacciones-quimicas"><span class="num">5</span> Teorías de las reacciones químicas</h1><h2 data-num="5.1" id="s-5-1-introduccion"><span class="num">5.1</span> Introducción</h2><p class="corto">¿Por qué unas reacciones son rápidas y otras lentas? ¿Por qué influyen en la velocidad la temperatura o un catalizador? Para responder hay que saber qué les ocurre a las partículas cuando reaccionan.</p>
+<p>Arrhenius propuso a finales del siglo XIX que las reacciones se producen por <strong>choques</strong> entre las moléculas, pero que solo una pequeña fracción de los choques da productos. Sus ideas se desarrollaron hacia 1916–1918 en la <strong>teoría de colisiones</strong> (Trautz y Lewis) y, en 1935, se ampliaron en la <strong>teoría del estado de transición</strong> (Eyring).</p>
+<h2 data-num="5.2" id="s-5-2-teoria-de-colisiones"><span class="num">5.2</span> Teoría de colisiones</h2><p class="corto">Esta teoría se basa en la teoría cinético-molecular de los gases. Establece que, para que haya reacción, las partículas de los reactivos tienen que <strong>chocar</strong>: con la energía del choque se rompen enlaces de los reactivos y se forman los enlaces nuevos de los productos.</p>
+<p class="corto">Pero no todos los choques dan productos. Si fuese así, casi todas las reacciones entre gases serían instantáneas, porque cada molécula choca miles de millones de veces por segundo. Para que un choque sea <strong>eficaz</strong> deben cumplirse dos condiciones:</p>
+<ul>
+<li><strong>Energía suficiente.</strong> Las partículas deben chocar con una energía cinética mínima que permita romper los enlaces de los reactivos. Esa energía mínima se llama <strong>energía de activación</strong>, <i>E</i><sub>a</sub>. Si no la alcanzan, rebotan sin reaccionar.</li>
+<li><strong>Orientación adecuada.</strong> Deben chocar por la parte de la molécula que permite que los átomos se unan como en los productos (factor estérico). Con una orientación incorrecta tampoco hay reacción, aunque la energía sea suficiente.</li>
+</ul>
+<figure><img alt="Choque eficaz y choques ineficaces entre H2 e I2" src="/temas/2bach-quim-t05/img/choques.svg" style="width:118mm"/><figcaption>Solo reaccionan las moléculas que chocan con energía suficiente y con la orientación adecuada.</figcaption></figure>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 12</span><p class="corto"><strong>En la reacción H<sub>2</sub>(g) + I<sub>2</sub>(g) → 2 HI(g), en ciertas condiciones, se producen unos 10<sup>31</sup> choques por cm<sup>3</sup> y por segundo, pero solo unos 10<sup>14</sup> son eficaces. ¿Qué conclusiones se obtienen?</strong></p><p class="corto">Solo uno de cada 10<sup>31</sup>/10<sup>14</sup> = 10<sup>17</sup> choques produce HI. Esto confirma que la reacción se produce por choques entre moléculas, pero que casi ninguno es eficaz: solo lo son aquellos en los que las moléculas tienen una energía igual o mayor que <i>E</i><sub>a</sub> y la orientación adecuada.</p></div>
+<p class="corto">La teoría de colisiones explica bien las reacciones sencillas entre gases (sobre todo bimoleculares), pero tiene limitaciones: es difícil calcular el factor de orientación en moléculas complejas y no describe qué ocurre durante el choque.</p>
+<h2 data-num="5.3" id="s-5-3-teoria-del-estado-de-transicion"><span class="num">5.3</span> Teoría del estado de transición</h2><p class="corto">Propuesta por Eyring en 1935, amplía la anterior y se fija en lo que ocurre durante el choque eficaz.</p>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Complejo activado (estado de transición)</p><p class="corto">Agrupación inestable y de máxima energía que forman momentáneamente las partículas de los reactivos al chocar de forma eficaz. En ella los enlaces de los reactivos se están rompiendo y los de los productos se están formando.</p></div>
+<p class="corto">Como el complejo activado tiene mucha energía, es muy inestable y dura muy poco: se descompone enseguida, bien dando los productos, bien volviendo a dar los reactivos. La reacción sigue el camino que requiere menos energía, y el punto más alto de ese camino es el complejo activado.</p>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 13</span><p class="corto"><strong>El complejo activado de H<sub>2</sub> + I<sub>2</sub> → 2 HI.</strong></p><p>Al chocar una molécula de H<sub>2</sub> y una de I<sub>2</sub> con la orientación adecuada se forma un complejo activado de cuatro átomos, H<sub>2</sub>I<sub>2</sub>, en el que se están debilitando los enlaces H–H e I–I y empiezan a formarse dos enlaces H–I. Si se rompen los enlaces H–H e I–I, se obtienen 2 HI; si se rompen los H–I que empezaban a formarse, se recuperan H<sub>2</sub> e I<sub>2</sub>.</p></div>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Energía de activación, <i>E</i><sub>a</sub></p><p class="corto">Energía mínima que necesitan los reactivos para formar el complejo activado, es decir, para que un choque sea eficaz. Es la diferencia de energía entre el complejo activado y los reactivos.</p></div>
+<p class="corto">Todas las reacciones, exotérmicas o endotérmicas, tienen que superar esa barrera. <strong>Cuanto mayor es <i>E</i><sub>a</sub>, más lenta es la reacción</strong>: menos moléculas tienen la energía necesaria y menos choques son eficaces.</p>
+<h2 data-num="5.4" id="s-5-4-diagramas-de-energia"><span class="num">5.4</span> Diagramas de energía</h2><p class="corto">Un <strong>diagrama de energía</strong> (o perfil de reacción) representa la energía del sistema a medida que avanza la reacción: reactivos → complejo activado → productos. Recuerda del tema 4:</p>
+<ul class="lista-junta">
+<li><strong>Reacción exotérmica:</strong> desprende energía; la entalpía del sistema disminuye (Δ<i>H</i> &lt; 0). Los productos quedan por <strong>debajo</strong> de los reactivos.</li>
+<li><strong>Reacción endotérmica:</strong> absorbe energía; la entalpía aumenta (Δ<i>H</i> &gt; 0). Los productos quedan por <strong>encima</strong>.</li>
+</ul>
+<figure><img alt="Diagramas de energía de una reacción exotérmica y de una endotérmica" src="/temas/2bach-quim-t05/img/perfiles.svg" style="width:150mm"/><figcaption>Diagramas de energía. <i>E</i><sub>a</sub>: activación de la reacción directa; <i>E</i>′<sub>a</sub>: de la inversa.</figcaption></figure>
+<p class="corto">Se leen de izquierda a derecha:</p>
+<ul>
+<li>A la izquierda, el nivel de energía de los <strong>reactivos</strong>.</li>
+<li>La subida hasta el máximo es la <strong>energía de activación de la reacción directa</strong>, <i>E</i><sub>a</sub>. En el máximo está el complejo activado, que puede evolucionar hacia la derecha (productos) o hacia la izquierda (reactivos).</li>
+<li>La bajada desde el máximo hasta los productos es la <strong>energía de activación de la reacción inversa</strong>, <i>E</i>′<sub>a</sub>: la barrera que habría que superar para pasar de productos a reactivos.</li>
+<li>A la derecha, el nivel de los <strong>productos</strong>. La diferencia entre productos y reactivos es la entalpía de reacción.</li>
+</ul>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Fórmula</span><p class="mcr-caja__termino corto">Entalpía de reacción y energías de activación</p><p class="formula corto">Δ<i>H</i> = <i>H</i><sub>productos</sub> − <i>H</i><sub>reactivos</sub> = <i>E</i><sub>a</sub> − <i>E</i>′<sub>a</sub></p></div>
+<ul class="leyenda lista-junta"><li>Exotérmica: <i>E</i><sub>a</sub> &lt; <i>E</i>′<sub>a</sub>, Δ<i>H</i> &lt; 0. Endotérmica: <i>E</i><sub>a</sub> &gt; <i>E</i>′<sub>a</sub>, Δ<i>H</i> &gt; 0.</li>
+<li>En una reacción endotérmica, <i>E</i><sub>a</sub> es siempre mayor que Δ<i>H</i>.</li></ul>
+<aside class="mcr-nota"><span class="mcr-etiqueta">Atención</span><p class="corto">No confundas velocidad con energía de reacción: una reacción exotérmica no es necesariamente rápida, ni una endotérmica lenta. La velocidad depende de la altura de la barrera, <i>E</i><sub>a</sub>, no de Δ<i>H</i>.</p></aside>
+<div class="mcr-caja mcr-caja--ejemplo larga"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 14</span><p class="corto"><strong>Para una reacción, <i>E</i><sub>a</sub> = 120 kJ/mol y Δ<i>H</i> = −50 kJ/mol. a) Calcula la energía de activación de la reacción inversa. b) ¿Qué reacción es más rápida, la directa o la inversa, a la misma temperatura?</strong></p><ol class="lista-junta" type="a"><li>De Δ<i>H</i> = <i>E</i><sub>a</sub> − <i>E</i>′<sub>a</sub>: <i>E</i>′<sub>a</sub> = <i>E</i><sub>a</sub> − Δ<i>H</i> = 120 − (−50) = <strong>170 kJ/mol</strong>. Es mayor que <i>E</i><sub>a</sub>, como corresponde a una reacción exotérmica.</li></ol>
+<ol class="lista-junta" start="2" type="a">
+<li>La <strong>directa</strong>, porque su barrera es más baja (120 &lt; 170 kJ/mol): una fracción mayor de las moléculas alcanza la energía necesaria y hay más choques eficaces.</li></ol></div>
+<aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=5.4"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-5_4.svg"/></a><div><p class="tit corto">Actividades interactivas · 5.4</p><ul><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-15">Test · Choque eficaz</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-16">Número · Energía de activación inversa</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-17">Test · Diagrama endotérmico</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-18">Huecos · Complejo activado</a></li></ul></div></aside>
+<section class="practica"><p class="practica__tit mcr-etiqueta corto">Práctica · Ejercicios 16 a 18</p><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">16</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Para la reacción A(g) + B(g) → C(g), Δ<i>H</i>° = +10 kJ y la energía de activación de la reacción directa es 30 kJ.</p><ol class="lista-junta"><li><span class="let">a)</span>Calcula la energía de activación de la reacción inversa.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">16</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Dibuja el diagrama de energía de la reacción.</li><li><span class="let">c)</span>Explica cómo cambiaría el diagrama al añadir un catalizador.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">17</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Razona si son verdaderas o falsas:</p><ol class="lista-junta"><li><span class="let">a)</span>Las reacciones exotérmicas son más rápidas que las endotérmicas.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">17</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>El complejo activado es una especie estable que puede aislarse.</li><li><span class="let">c)</span>En una reacción endotérmica, la energía de activación es mayor que la entalpía de reacción.</li><li><span class="let">d)</span>En una reacción exotérmica, la energía de activación inversa es mayor que la directa.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">18</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Una reacción tiene una energía de activación de 85 kJ/mol en sentido directo y de 60 kJ/mol en sentido inverso.</p><ol class="lista-junta"><li><span class="let">a)</span>Calcula su entalpía de reacción e indica si es exotérmica o endotérmica.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">18</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Un catalizador reduce la energía de activación directa a 55 kJ/mol. ¿Cuánto valen la nueva energía de activación inversa y la entalpía de reacción?</li></ol></div></div></div></section>
+<h1 class="ap" data-num="6" id="s-6-factores-que-influyen-en-la-velocidad"><span class="num">6</span> Factores que influyen en la velocidad</h1><p>Ya sabemos expresar la velocidad (con la ecuación de velocidad) y cómo ocurren las reacciones (mecanismos y teorías). Ahora podemos explicar de qué depende la velocidad, para acelerar o frenar una reacción según nos interese. Todos los factores se razonan con la misma idea: <strong>la velocidad aumenta cuando aumenta el número de choques eficaces por unidad de tiempo</strong>.</p>
+<h2 data-num="6.1" id="s-6-1-temperatura"><span class="num">6.1</span> Temperatura</h2><p class="corto">Al <strong>aumentar la temperatura</strong>, la velocidad de casi todas las reacciones <strong>aumenta</strong>; al disminuirla, disminuye. La razón está en la energía de las moléculas:</p>
+<ul class="lista-junta">
+<li>A más temperatura, mayor es la energía cinética media de las moléculas, así que una <strong>fracción mucho mayor</strong> de ellas tiene una energía igual o superior a <i>E</i><sub>a</sub>. Este es el efecto principal.</li>
+<li>Además, las moléculas se mueven más deprisa y chocan con más frecuencia (efecto menor).</li>
+</ul>
+<figure><img alt="Distribución de energías de las moléculas a dos temperaturas" src="/temas/2bach-quim-t05/img/maxwell.svg" style="width:112mm"/><figcaption>Distribución de energías de las moléculas: a <i>T</i><sub>2</sub> &gt; <i>T</i><sub>1</sub> crece mucho el número de moléculas con <i>E</i> ≥ <i>E</i><sub>a</sub>.</figcaption></figure>
+<p class="corto">La temperatura influye en la velocidad a través de la constante <i>k</i>. Arrhenius encontró experimentalmente la relación entre <i>k</i>, <i>E</i><sub>a</sub> y <i>T</i>:</p>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Fórmula</span><p class="mcr-caja__termino corto">Ecuación de Arrhenius</p><p class="formula corto"><i>k</i> = <i>A</i> · e<sup>−<i>E</i><sub>a</sub>/(<i>R</i> · <i>T</i>)</sup></p></div>
+<ul class="leyenda lista-junta"><li><i>k</i>: constante de velocidad (sus unidades dependen del orden).</li>
+<li><i>A</i>: factor de frecuencia o factor preexponencial. Está relacionado con la frecuencia de los choques y con su orientación; tiene las mismas unidades que <i>k</i>.</li>
+<li><i>E</i><sub>a</sub>: energía de activación, en J/mol. <i>R</i> = 8,31 J · mol<sup>−1</sup> · K<sup>−1</sup>. <i>T</i>: temperatura absoluta, en K.</li></ul>
+<p class="corto">De la ecuación se deduce cómo cambia <i>k</i>, y con ella la velocidad:</p>
+<ul class="lista-junta">
+<li>Si <strong><i>T</i> aumenta</strong>, el exponente −<i>E</i><sub>a</sub>/(<i>R</i> · <i>T</i>) se hace menos negativo y <i>k</i> <strong>aumenta</strong>. Como la dependencia es exponencial, un aumento pequeño de <i>T</i> produce un aumento grande de <i>k</i>.</li>
+<li>Si <strong><i>E</i><sub>a</sub> es mayor</strong>, el exponente es más negativo y <i>k</i> es <strong>menor</strong>: la reacción es más lenta.</li>
+<li>Si <strong><i>A</i> es mayor</strong> (más choques bien orientados), <i>k</i> es mayor.</li>
+</ul>
+<p class="corto">Tomando logaritmos neperianos se obtiene la ecuación de una recta, <i>y</i> = <i>m</i> · <i>x</i> + <i>n</i>:</p>
+<p class="formula corto">ln <i>k</i> = − (<i>E</i><sub>a</sub>/<i>R</i>) · (1/<i>T</i>) + ln <i>A</i></p>
+<figure><img alt="Representación de ln k frente a 1/T" src="/temas/2bach-quim-t05/img/arrhenius.svg" style="width:100mm"/><figcaption>Si se representa ln <i>k</i> frente a 1/<i>T</i>, la pendiente da <i>E</i><sub>a</sub> y la ordenada en el origen, <i>A</i>.</figcaption></figure>
+<p class="corto">Así se determina experimentalmente la energía de activación: se mide <i>k</i> a varias temperaturas, se representa ln <i>k</i> frente a 1/<i>T</i> y de la pendiente (−<i>E</i><sub>a</sub>/<i>R</i>) se despeja <i>E</i><sub>a</sub>.</p>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 15</span><p class="corto"><strong>Una reacción tiene <i>E</i><sub>a</sub> = 50 kJ/mol. ¿Cuántas veces aumenta su constante de velocidad al pasar de 25 °C a 35 °C?</strong></p><p class="corto">Escribimos la ecuación de Arrhenius a las dos temperaturas y las dividimos; <i>A</i> se simplifica:</p>
+<p class="formula corto">ln (<i>k</i><sub>2</sub>/<i>k</i><sub>1</sub>) = (<i>E</i><sub>a</sub>/<i>R</i>) · (1/<i>T</i><sub>1</sub> − 1/<i>T</i><sub>2</sub>) = (50 000/8,31) · (1/298 − 1/308) = 0,656</p>
+<p class="corto"><i>k</i><sub>2</sub>/<i>k</i><sub>1</sub> = e<sup>0,656</sup> = <strong>1,9</strong>. Con solo 10 °C más, la constante (y la velocidad, con las mismas concentraciones) casi se duplica.</p></div>
+<aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=6.1"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-6_1.svg"/></a><div><p class="tit corto">Actividades interactivas · 6.1</p><ul class="lista-junta"><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-21">Número · Arrhenius</a></li><li><a href="https://phet.colorado.edu/es/simulations/reactions-and-rates">Simulación · Reacciones y velocidad (PhET)</a></li></ul></div></aside>
+<h2 data-num="6.2" id="s-6-2-concentracion-de-los-reactivos"><span class="num">6.2</span> Concentración de los reactivos</h2><p class="corto">En general, al <strong>aumentar la concentración</strong> de los reactivos, la velocidad <strong>aumenta</strong>. Si en el mismo volumen hay más partículas, chocan más veces por segundo, y también es mayor el número de choques eficaces.</p>
+<figure><img alt="Pocas y muchas partículas en el mismo volumen" src="/temas/2bach-quim-t05/img/concentracion.svg" style="width:104mm"/></figure>
+<p>La ecuación de velocidad, <i>v</i> = <i>k</i> · [A]<sup>α</sup> · [B]<sup>β</sup>, dice <strong>cuánto</strong> influye cada reactivo: depende de su orden parcial. Si la reacción es de orden 0 respecto de un reactivo, cambiar su concentración no cambia la velocidad. También explica por qué la velocidad disminuye a medida que avanza la reacción: los reactivos se van gastando.</p>
+<p class="corto">En las reacciones entre <strong>gases</strong>, la concentración se puede cambiar con la presión o el volumen. De la ecuación de los gases ideales:</p>
+<p class="formula corto"><i>P</i> · <i>V</i> = <i>n</i> · <i>R</i> · <i>T</i>   →   <i>n</i>/<i>V</i> = <i>c</i> = <i>P</i>/(<i>R</i> · <i>T</i>)</p>
+<p class="corto">A temperatura constante, la concentración es proporcional a la presión. Por eso <strong>aumentar la presión o disminuir el volumen</strong> aumenta la concentración de los gases y, con ella, la velocidad.</p>
+<h2 data-num="6.3" id="s-6-3-naturaleza-y-estado-de-los-reactivos"><span class="num">6.3</span> Naturaleza y estado de los reactivos</h2><p class="corto"><strong>Naturaleza de los reactivos.</strong> Cada reacción tiene su propia energía de activación, que depende de los enlaces que hay que romper y formar. En condiciones parecidas:</p>
+<ul>
+<li>Las reacciones que exigen romper muchos enlaces covalentes fuertes suelen ser <strong>lentas</strong> (la combustión del papel a temperatura ambiente no empieza sola).</li>
+<li>Las reacciones entre iones en disolución suelen ser <strong>muy rápidas</strong> (las precipitaciones, las neutralizaciones): los iones ya están separados por el disolvente y basta con que se encuentren; apenas hay que romper enlaces.</li>
+<li>Las reacciones de transferencia de electrones (redox) dependen de la facilidad para ceder o captar electrones. El sodio, con una energía de ionización baja, se oxida en el aire en segundos; el oro, con una energía de ionización alta, prácticamente no se oxida.</li>
+</ul>
+<p><strong>Estado físico.</strong> Las partículas tienen más movilidad en los gases y en las disoluciones que en los sólidos, así que chocan con más facilidad. Por eso las reacciones homogéneas entre gases o entre sustancias disueltas suelen ser más rápidas que las que se dan entre sólidos. Esta es la razón por la que en el laboratorio se trabaja casi siempre con disoluciones.</p>
+<p class="corto"><strong>Grado de división.</strong> Cuando un reactivo es sólido, la reacción solo ocurre en su <strong>superficie</strong>, que es donde pueden chocar las partículas. Si el sólido se divide en trozos más pequeños o se pulveriza, la superficie de contacto aumenta mucho, hay más choques y la reacción es más rápida.</p>
+<figure><img alt="Un cubo, ocho cubos y polvo: la superficie crece al dividir el sólido" src="/temas/2bach-quim-t05/img/division.svg" style="width:112mm"/><figcaption>Al dividir el mismo sólido, aumenta la superficie expuesta: una astilla arde antes que un tronco y la harina en suspensión puede explotar.</figcaption></figure>
+<aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=6.3"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-6_3.svg"/></a><div><p class="tit corto">Actividades interactivas · 6.3</p><ul class="lista-junta"><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-22">Ordenar · Estado físico</a></li></ul></div></aside>
+<h2 data-num="6.4" id="s-6-4-catalizadores"><span class="num">6.4</span> Catalizadores</h2>
+<div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Catalizador y catálisis</p><p class="corto">Un <strong>catalizador</strong> es una sustancia que, en pequeña cantidad, aumenta la velocidad de una reacción sin consumirse en ella: al final del proceso se recupera sin cambios. La acción del catalizador se llama <strong>catálisis</strong>.</p></div>
+<p class="corto"><strong>Cómo actúa.</strong> El catalizador participa en la reacción y ofrece un <strong>camino alternativo</strong> (un mecanismo distinto) con una <strong>energía de activación menor</strong>. Con una barrera más baja, una fracción mayor de las moléculas tiene energía suficiente, hay más choques eficaces y, según la ecuación de Arrhenius, <i>k</i> aumenta.</p>
+<p class="corto">Características de los catalizadores:</p>
+<ul>
+<li><strong>No aparecen en la ecuación global</strong>: no son ni reactivos ni productos. Se consumen en una etapa y se regeneran en otra.</li>
+<li>Son eficaces en <strong>cantidades muy pequeñas</strong> y se recuperan al final, así que se pueden volver a usar.</li>
+<li><strong>No cambian las magnitudes termodinámicas</strong> de la reacción (Δ<i>H</i>, Δ<i>S</i>, Δ<i>G</i>): son funciones de estado y solo dependen de reactivos y productos, que siguen siendo los mismos. Por eso un catalizador <strong>no hace espontánea</strong> una reacción que no lo es.</li>
+<li>Bajan por igual las barreras de la reacción directa y de la inversa: <strong>aceleran las dos</strong>. Por eso el sistema llega antes al equilibrio, pero el equilibrio final no cambia (tema 6).</li>
+<li>Suelen ser <strong>específicos</strong>: cada catalizador acelera una reacción concreta o un tipo de reacciones.</li>
+</ul>
+<figure><img alt="Diagrama de energía con y sin catalizador" src="/temas/2bach-quim-t05/img/catalizador.svg" style="width:90mm"/><figcaption>El catalizador baja <i>E</i><sub>a</sub> y <i>E</i>′<sub>a</sub> lo mismo: Δ<i>H</i> no cambia.</figcaption></figure>
+<p>Hay sustancias que, en vez de acelerar, frenan las reacciones: son los <strong>inhibidores</strong>, a veces llamados catalizadores negativos. No proporcionan un camino de menor energía; actúan de otra forma, por ejemplo bloqueando los centros activos de un catalizador o capturando intermedios de reacción. Se usan como conservantes en alimentos y como antioxidantes.</p>
+<p class="corto">Según la fase en que estén el catalizador y los reactivos, la catálisis puede ser:</p>
+<ul>
+<li><strong>Homogénea:</strong> catalizador y reactivos están en la misma fase, normalmente en disolución (el H<sup>+</sup> que cataliza la formación de un éster).</li>
+<li><strong>Heterogénea:</strong> el catalizador está en otra fase, normalmente un sólido sobre cuya superficie reaccionan gases o líquidos. Es la más usada en la industria: el hierro en la síntesis del amoniaco o el platino y el rodio de los catalizadores de los coches.</li>
+<li><strong>Enzimática:</strong> los catalizadores son <strong>enzimas</strong>, proteínas de los seres vivos.</li>
+</ul>
+<p>La <strong>catálisis enzimática</strong> se caracteriza por su enorme <strong>eficacia</strong> (las enzimas pueden multiplicar la velocidad de una reacción por 10<sup>6</sup> a 10<sup>12</sup>) y por su <strong>especificidad</strong>: cada enzima actúa sobre un sustrato concreto y cataliza una reacción determinada. Su funcionamiento se explica con el modelo de <strong>llave y cerradura</strong>, propuesto por Fischer en 1894:</p>
+<ul>
+<li><strong>Enzima</strong> (la cerradura): proteína que cataliza una reacción bioquímica.</li>
+<li><strong>Centro activo:</strong> zona de la enzima, con una forma determinada, donde ocurre la catálisis.</li>
+<li><strong>Sustrato</strong> (la llave): sustancia sobre la que actúa la enzima. Encaja en el centro activo.</li>
+<li><strong>Complejo enzima-sustrato:</strong> intermedio en el que el sustrato está unido al centro activo y se transforma.</li>
+<li><strong>Productos:</strong> se separan de la enzima, que queda libre para actuar de nuevo.</li>
+</ul>
+<figure><img alt="Modelo de llave y cerradura de la catálisis enzimática" src="/temas/2bach-quim-t05/img/enzima.svg" style="width:124mm"/><figcaption>Modelo de llave y cerradura: solo el sustrato con la forma adecuada encaja en el centro activo.</figcaption></figure>
+<div class="mcr-caja mcr-caja--ejemplo"><span class="mcr-caja__etiqueta mcr-etiqueta">Ejemplo 16</span><p class="corto"><strong>Los detergentes enzimáticos.</strong></p><p class="corto">Muchos detergentes actuales llevan enzimas biodegradables que eliminan manchas de origen orgánico a temperaturas bajas, con ahorro de energía. Suelen combinar:</p><ul class="lista-junta lista-junta">
+<li><strong>Proteasas:</strong> rompen las proteínas de manchas difíciles como la sangre o el huevo.</li>
+<li><strong>Amilasas:</strong> rompen el almidón y otros glúcidos.</li>
+<li>Además llevan <strong>tensioactivos</strong> (no son enzimas) que arrastran y dispersan en el agua los restos que dejan las enzimas.</li></ul></div>
+<p class="tabla-tit corto">Tabla resumen · Factores que influyen en la velocidad de reacción</p><table class="mcr-tabla resumen-prop"><thead><tr><th>Factor</th><th>Influencia</th><th>Explicación</th><th>Expresión</th></tr></thead>
+<tr><td class="fila">Temperatura</td><td>↑ <i>T</i> → ↑ <i>v</i></td><td>Más moléculas con <i>E</i> ≥ <i>E</i><sub>a</sub> y más choques: más choques eficaces</td><td>Arrhenius: <i>k</i> = <i>A</i> · e<sup>−<i>E</i><sub>a</sub>/(<i>RT</i>)</sup></td></tr>
+<tr><td class="fila">Concentración</td><td>↑ <i>c</i> → ↑ <i>v</i> (no influye si el orden es 0)</td><td>Más partículas por volumen: más choques</td><td><i>v</i> = <i>k</i> · [A]<sup>α</sup> · [B]<sup>β</sup></td></tr>
+<tr><td class="fila">Presión y volumen (gases)</td><td>↑ <i>P</i> o ↓ <i>V</i> → ↑ <i>c</i> → ↑ <i>v</i></td><td>Las mismas partículas en menos volumen: más choques</td><td><i>c</i> = <i>n</i>/<i>V</i> = <i>P</i>/(<i>RT</i>)</td></tr>
+<tr><td class="fila">Naturaleza</td><td>Depende de los enlaces que se rompen y se forman</td><td>Cada reacción tiene su <i>E</i><sub>a</sub>; los iones en disolución reaccionan muy deprisa</td><td>—</td></tr>
+<tr><td class="fila">Estado físico</td><td><i>v</i><sub>gases, disol.</sub> &gt; <i>v</i><sub>sólidos</sub></td><td>Más movilidad de las partículas: más choques</td><td>—</td></tr>
+<tr><td class="fila">Grado de división</td><td>↓ tamaño → ↑ <i>v</i></td><td>Más superficie de contacto: más choques</td><td>—</td></tr>
+<tr><td class="fila">Catalizadores</td><td>↑ <i>v</i> (inhibidores: ↓ <i>v</i>)</td><td>Camino alternativo con menor <i>E</i><sub>a</sub>: ↑ <i>k</i>. No cambian Δ<i>H</i>, Δ<i>S</i> ni Δ<i>G</i></td><td>Diagrama de energía y Arrhenius</td></tr></table>
+<aside class="mcr-nota"><span class="mcr-etiqueta">Recuerda</span><p class="corto">En la PEvAU, justifica siempre cada factor con su expresión: la concentración con la <strong>ecuación de velocidad</strong>, y la temperatura y el catalizador con la <strong>ecuación de Arrhenius</strong>.</p></aside>
+<aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=6.4"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-6_4.svg"/></a><div><p class="tit corto">Actividades interactivas · 6.4</p><ul class="lista-junta"><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-19">Parejas · Factores y su explicación</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-20">Test · ¿Qué cambia un catalizador?</a></li><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-23">Huecos · Catálisis</a></li></ul></div></aside>
+<section class="practica"><p class="practica__tit mcr-etiqueta corto">Práctica · Ejercicios 19 a 22</p><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">19</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Cuando a una reacción se le añade un catalizador, justifica si son verdaderas o falsas estas afirmaciones:</p><ol class="lista-junta"><li><span class="let">a)</span>La entalpía de la reacción disminuye.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">19</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>La energía de activación no cambia.</li><li><span class="let">c)</span>La velocidad de la reacción aumenta.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">20</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Para la reacción 2 NO(g) + O<sub>2</sub>(g) → 2 NO<sub>2</sub>(g), la ecuación de velocidad es <i>v</i> = <i>k</i> · [NO]<sup>2</sup> · [O<sub>2</sub>]. Razona cómo cambia la velocidad si:</p><ol class="lista-junta"><li><span class="let">a)</span>Se duplica la concentración de NO.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">20</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Se reduce el volumen del recipiente a la mitad.</li><li><span class="let">c)</span>Se aumenta la temperatura.</li><li><span class="let">d)</span>Se añade un catalizador.</li></ol></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">21</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">La constante de velocidad de una reacción se duplica al pasar de 27 °C a 37 °C. Calcula su energía de activación.</p><p class="datos corto">Dato: <i>R</i> = 8,31 J · mol<sup>−1</sup> · K<sup>−1</sup>.</p></div></div></div><div class="mcr-ejercicio"><span class="mcr-ejercicio__num">22</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado"><p class="corto">Explica, con la teoría de colisiones, estos hechos:</p><ol class="lista-junta"><li><span class="let">a)</span>Unas virutas de hierro arden en la llama de un mechero, pero un clavo no.</li></ol></div></div></div><div class="mcr-ejercicio cont"><span class="mcr-ejercicio__num vacio">22</span><div class="mcr-ejercicio__cuerpo"><div class="enunciado enun-cont"><ol class="lista-junta" start="2"><li><span class="let">b)</span>Los alimentos se conservan más tiempo en el frigorífico.</li><li><span class="let">c)</span>En el laboratorio se trabaja casi siempre con reactivos en disolución.</li><li><span class="let">d)</span>Un catalizador no aumenta la cantidad de producto que se obtiene al final, aunque la reacción vaya más deprisa.</li></ol></div></div></div></section>
