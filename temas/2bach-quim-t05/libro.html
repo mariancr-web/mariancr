@@ -211,6 +211,12 @@ table.ecs td.dh { text-align: left; white-space: nowrap; padding-left: 6mm; }
 .mcr-ejercicio .enunciado .mcr-tabla { margin: 1mm 0 1.5mm !important; }
 .tipo-solucionario .mcr-ejercicio:not(.cont) .enunciado { break-inside: avoid; }
 .tipo-solucionario .mcr-ejercicio:not(.cont) { break-inside: avoid; }
+.mcr-ejercicio .enunciado .mcr-tabla { font-size: .9em; }
+.mcr-ejercicio .enunciado .mcr-tabla th, .mcr-ejercicio .enunciado .mcr-tabla td { padding-top: .3mm !important; padding-bottom: .3mm !important; line-height: 1.25; }
+.tipo-solucionario h1.nonum { margin-top: 3mm !important; margin-bottom: 3mm !important; }
+.tipo-solucionario .mcr-ejercicio__cuerpo { gap: .8mm; }
+.tipo-solucionario .enunciado ol > li { margin-bottom: .2mm; }
+.cadena { text-align: center !important; background: var(--acento-suave, #FFF1F2); border-radius: 3mm; padding: 2mm 3mm; font-family: var(--font-marca); font-size: .95em; margin: 1mm 0 var(--hueco); break-inside: avoid; }
 
 /* pantalla (web) */
 .hoja .mcr-nota { position: static !important; width: auto !important; float: none !important; margin: 2mm 0 3mm !important; }
@@ -328,6 +334,8 @@ Por tanto α = 2: la reacción es de <strong>segundo orden</strong> y <i>v</i> =
 <li>Si el volumen se divide entre 3, con los mismos moles las concentraciones se multiplican por 3:
 <p class="formula corto"><i>v</i>′ = <i>k</i> · (3 [A])<sup>2</sup> · (3 [B]) = 9 · 3 · <i>k</i> · [A]<sup>2</sup> · [B] = 27 <i>v</i></p>
 La velocidad se hace <strong>27 veces mayor</strong>. La constante <strong>no cambia</strong>: solo depende de la temperatura, que no varía.</li></ol></div>
+<p>El orden también se reconoce en cómo baja la concentración de un reactivo con el tiempo. Con la misma concentración inicial y la misma velocidad inicial, en orden 0 [A] baja en línea recta (la velocidad no cambia); en orden 1 sigue una curva exponencial, y en orden 2 baja deprisa al principio y muy despacio al final, porque la velocidad depende de [A]<sup>2</sup>.</p>
+<figure><img alt="Concentración frente al tiempo para órdenes 0, 1 y 2" src="/temas/2bach-quim-t05/img/orden-tiempo.svg" style="width:100mm"/><figcaption>[A] frente al tiempo según el orden de reacción.</figcaption></figure>
 <p class="tabla-tit corto">Unidades de la constante de velocidad según el orden total</p><table class="mcr-tabla junta"><thead><tr><th>Orden total</th><th>Ecuación (ejemplo)</th><th>Unidades de <i>k</i></th></tr></thead>
 <tr><td class="fila">0</td><td><i>v</i> = <i>k</i></td><td>mol · L<sup>−1</sup> · s<sup>−1</sup></td></tr>
 <tr><td class="fila">1</td><td><i>v</i> = <i>k</i> · [A]</td><td>s<sup>−1</sup></td></tr>
@@ -379,6 +387,14 @@ La velocidad se hace <strong>27 veces mayor</strong>. La constante <strong>no ca
 <p class="corto">Los átomos H y Br son <strong>intermedios de reacción</strong>: se forman en unas etapas y se consumen en otras, y no aparecen en la ecuación global.</p></div>
 <p class="corto">Cada etapa tiene su propia velocidad y su propia ecuación de velocidad. Si una es mucho más lenta que las demás, limita la rapidez de todo el proceso, igual que el paso más estrecho de una carretera limita el tráfico: es la <strong>etapa limitante</strong> o determinante de la velocidad.</p>
 <figure><img alt="Diagrama de energía de una reacción en dos etapas con un intermedio" src="/temas/2bach-quim-t05/img/mecanismo.svg" style="width:88mm"/><figcaption>Reacción en dos etapas: cada una tiene su energía de activación; la de mayor barrera es la etapa lenta.</figcaption></figure>
+<p class="corto">Un mecanismo se puede representar de dos formas, que se complementan:</p>
+<p class="corto"><strong>Forma 1 · Como suma de etapas.</strong> Se escriben las etapas elementales y se suman como en la ley de Hess: los intermedios se cancelan y queda la ecuación global. Por ejemplo, para NO<sub>2</sub> + CO → NO + CO<sub>2</sub>:</p>
+<table class="mcr-tabla junta"><thead><tr><th>Etapa</th><th>Reacción elemental</th><th>Ecuación de velocidad</th></tr></thead>
+<tr><td class="fila">1 (lenta)</td><td>2 NO<sub>2</sub> → NO<sub>3</sub> + NO</td><td><i>v</i><sub>1</sub> = <i>k</i><sub>1</sub> · [NO<sub>2</sub>]<sup>2</sup></td></tr>
+<tr><td class="fila">2 (rápida)</td><td>NO<sub>3</sub> + CO → NO<sub>2</sub> + CO<sub>2</sub></td><td><i>v</i><sub>2</sub> = <i>k</i><sub>2</sub> · [NO<sub>3</sub>] · [CO]</td></tr>
+<tr><td class="fila"><strong>Suma</strong></td><td><strong>NO<sub>2</sub> + CO → NO + CO<sub>2</sub></strong></td><td><strong><i>v</i> = <i>k</i> · [NO<sub>2</sub>]<sup>2</sup></strong></td></tr></table>
+<p class="corto">Se cancelan el intermedio NO<sub>3</sub> y el NO<sub>2</sub> que se regenera. Como la velocidad la fija la etapa lenta, la reacción es de orden 2 respecto del NO<sub>2</sub> y de orden 0 respecto del CO, aunque su coeficiente sea 1.</p>
+<p class="corto"><strong>Forma 2 · En un diagrama de energía.</strong> Cada etapa tiene su complejo activado y su energía de activación; entre las dos barreras está el intermedio, en un mínimo relativo de energía. La etapa con la barrera más alta es la lenta (figura anterior).</p>
 <p class="tabla-tit corto">Tabla resumen · Reacciones elementales y no elementales</p><table class="mcr-tabla resumen-prop"><thead><tr><th></th><th>Reacción elemental (simple)</th><th>Reacción no elemental (compleja)</th></tr></thead>
 <tr><td class="fila">Etapas</td><td>Una sola, representada por la propia ecuación</td><td>Varias, cada una con su ecuación química</td></tr>
 <tr><td class="fila">Intermedios de reacción</td><td>No hay</td><td>Sí: se forman y se consumen; no aparecen en la ecuación global, pero se pueden detectar</td></tr>
@@ -425,6 +441,11 @@ La velocidad se hace <strong>27 veces mayor</strong>. La constante <strong>no ca
 <li>La bajada desde el máximo hasta los productos es la <strong>energía de activación de la reacción inversa</strong>, <i>E</i>′<sub>a</sub>: la barrera que habría que superar para pasar de productos a reactivos.</li>
 <li>A la derecha, el nivel de los <strong>productos</strong>. La diferencia entre productos y reactivos es la entalpía de reacción.</li>
 </ul>
+<p class="corto">Esta relación se ve también escribiendo la reacción como <strong>suma de dos etapas</strong>, igual que en la ley de Hess: el complejo activado aparece en las dos y se cancela.</p>
+<table class="mcr-tabla junta"><thead><tr><th>Etapa</th><th>Proceso</th><th class="c">Energía</th></tr></thead>
+<tr><td class="fila">Activación</td><td>Reactivos → complejo activado</td><td class="c">+ <i>E</i><sub>a</sub></td></tr>
+<tr><td class="fila">Desactivación</td><td>Complejo activado → productos</td><td class="c">− <i>E</i>′<sub>a</sub></td></tr>
+<tr><td class="fila"><strong>Suma</strong></td><td><strong>Reactivos → productos</strong></td><td class="c"><strong>Δ<i>H</i> = <i>E</i><sub>a</sub> − <i>E</i>′<sub>a</sub></strong></td></tr></table>
 <div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Fórmula</span><p class="mcr-caja__termino corto">Entalpía de reacción y energías de activación</p><p class="formula corto">Δ<i>H</i> = <i>H</i><sub>productos</sub> − <i>H</i><sub>reactivos</sub> = <i>E</i><sub>a</sub> − <i>E</i>′<sub>a</sub></p></div>
 <ul class="leyenda lista-junta"><li>Exotérmica: <i>E</i><sub>a</sub> &lt; <i>E</i>′<sub>a</sub>, Δ<i>H</i> &lt; 0. Endotérmica: <i>E</i><sub>a</sub> &gt; <i>E</i>′<sub>a</sub>, Δ<i>H</i> &gt; 0.</li>
 <li>En una reacción endotérmica, <i>E</i><sub>a</sub> es siempre mayor que Δ<i>H</i>.</li></ul>
@@ -441,6 +462,7 @@ La velocidad se hace <strong>27 veces mayor</strong>. La constante <strong>no ca
 <li>Además, las moléculas se mueven más deprisa y chocan con más frecuencia (efecto menor).</li>
 </ul>
 <figure><img alt="Distribución de energías de las moléculas a dos temperaturas" src="/temas/2bach-quim-t05/img/maxwell.svg" style="width:112mm"/><figcaption>Distribución de energías de las moléculas: a <i>T</i><sub>2</sub> &gt; <i>T</i><sub>1</sub> crece mucho el número de moléculas con <i>E</i> ≥ <i>E</i><sub>a</sub>.</figcaption></figure>
+<p class="cadena corto">↑ temperatura → ↑ energía cinética de las moléculas → ↑ moléculas con <i>E</i> ≥ <i>E</i><sub>a</sub> → ↑ choques eficaces → <strong>↑ velocidad</strong></p>
 <p class="corto">La temperatura influye en la velocidad a través de la constante <i>k</i>. Arrhenius encontró experimentalmente la relación entre <i>k</i>, <i>E</i><sub>a</sub> y <i>T</i>:</p>
 <div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Fórmula</span><p class="mcr-caja__termino corto">Ecuación de Arrhenius</p><p class="formula corto"><i>k</i> = <i>A</i> · e<sup>−<i>E</i><sub>a</sub>/(<i>R</i> · <i>T</i>)</sup></p></div>
 <ul class="leyenda lista-junta"><li><i>k</i>: constante de velocidad (sus unidades dependen del orden).</li>
@@ -462,6 +484,9 @@ La velocidad se hace <strong>27 veces mayor</strong>. La constante <strong>no ca
 <aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=6.1"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-6_1.svg"/></a><div><p class="tit corto">Actividades interactivas · 6.1</p><ul class="lista-junta"><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-21">Número · Arrhenius</a></li><li><a href="https://phet.colorado.edu/es/simulations/reactions-and-rates">Simulación · Reacciones y velocidad (PhET)</a></li></ul></div></aside>
 <h2 data-num="6.2" id="s-6-2-concentracion-de-los-reactivos"><span class="num">6.2</span> Concentración de los reactivos</h2><p class="corto">En general, al <strong>aumentar la concentración</strong> de los reactivos, la velocidad <strong>aumenta</strong>. Si en el mismo volumen hay más partículas, chocan más veces por segundo, y también es mayor el número de choques eficaces.</p>
 <figure><img alt="Pocas y muchas partículas en el mismo volumen" src="/temas/2bach-quim-t05/img/concentracion.svg" style="width:104mm"/></figure>
+<p class="corto">A la misma temperatura, la <strong>fracción</strong> de moléculas que supera <i>E</i><sub>a</sub> es la misma, pero como hay más moléculas por unidad de volumen, también hay más que la superan y más choques eficaces por segundo:</p>
+<figure><img alt="Distribución de energías a dos concentraciones" src="/temas/2bach-quim-t05/img/maxwell-conc.svg" style="width:128mm"/><figcaption>Con mayor concentración (C<sub>2</sub>) hay más moléculas con <i>E</i> ≥ <i>E</i><sub>a</sub>.</figcaption></figure>
+<p class="cadena corto">↑ concentración → ↑ partículas por unidad de volumen → ↑ choques → ↑ choques eficaces → <strong>↑ velocidad</strong></p>
 <p>La ecuación de velocidad, <i>v</i> = <i>k</i> · [A]<sup>α</sup> · [B]<sup>β</sup>, dice <strong>cuánto</strong> influye cada reactivo: depende de su orden parcial. Si la reacción es de orden 0 respecto de un reactivo, cambiar su concentración no cambia la velocidad. También explica por qué la velocidad disminuye a medida que avanza la reacción: los reactivos se van gastando.</p>
 <p class="corto">En las reacciones entre <strong>gases</strong>, la concentración se puede cambiar con la presión o el volumen. De la ecuación de los gases ideales:</p>
 <p class="formula corto"><i>P</i> · <i>V</i> = <i>n</i> · <i>R</i> · <i>T</i>   →   <i>n</i>/<i>V</i> = <i>c</i> = <i>P</i>/(<i>R</i> · <i>T</i>)</p>
@@ -472,13 +497,18 @@ La velocidad se hace <strong>27 veces mayor</strong>. La constante <strong>no ca
 <li>Las reacciones entre iones en disolución suelen ser <strong>muy rápidas</strong> (las precipitaciones, las neutralizaciones): los iones ya están separados por el disolvente y basta con que se encuentren; apenas hay que romper enlaces.</li>
 <li>Las reacciones de transferencia de electrones (redox) dependen de la facilidad para ceder o captar electrones. El sodio, con una energía de ionización baja, se oxida en el aire en segundos; el oro, con una energía de ionización alta, prácticamente no se oxida.</li>
 </ul>
+<figure><img alt="Iones en disolución frente a moléculas con enlaces covalentes" src="/temas/2bach-quim-t05/img/naturaleza.svg" style="width:128mm"/><figcaption>La naturaleza de los reactivos decide la altura de la barrera, <i>E</i><sub>a</sub>.</figcaption></figure>
 <p><strong>Estado físico.</strong> Las partículas tienen más movilidad en los gases y en las disoluciones que en los sólidos, así que chocan con más facilidad. Por eso las reacciones homogéneas entre gases o entre sustancias disueltas suelen ser más rápidas que las que se dan entre sólidos. Esta es la razón por la que en el laboratorio se trabaja casi siempre con disoluciones.</p>
+<figure><img alt="Partículas en un sólido, un líquido y un gas" src="/temas/2bach-quim-t05/img/estados.svg" style="width:130mm"/><figcaption><i>v</i>(sólido) &lt; <i>v</i>(líquido o disolución) &lt; <i>v</i>(gas).</figcaption></figure>
 <p class="corto"><strong>Grado de división.</strong> Cuando un reactivo es sólido, la reacción solo ocurre en su <strong>superficie</strong>, que es donde pueden chocar las partículas. Si el sólido se divide en trozos más pequeños o se pulveriza, la superficie de contacto aumenta mucho, hay más choques y la reacción es más rápida.</p>
-<figure><img alt="Un cubo, ocho cubos y polvo: la superficie crece al dividir el sólido" src="/temas/2bach-quim-t05/img/division.svg" style="width:112mm"/><figcaption>Al dividir el mismo sólido, aumenta la superficie expuesta: una astilla arde antes que un tronco y la harina en suspensión puede explotar.</figcaption></figure>
+<figure><img alt="Un cubo, ocho cubos y polvo: la superficie crece al dividir el sólido" src="/temas/2bach-quim-t05/img/division.svg" style="width:105mm"/><figcaption>Al dividir el mismo sólido, aumenta la superficie expuesta: una astilla arde antes que un tronco y la harina en suspensión puede explotar.</figcaption></figure>
+<p class="cadena corto">↑ grado de división → ↑ superficie de contacto → ↑ choques → ↑ choques eficaces → <strong>↑ velocidad</strong></p>
 <aside class="mcr-actividades"><a class="qr" href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;a=6.3"><img alt="QR" src="/temas/2bach-quim-t05/img/qr/qr-6_3.svg"/></a><div><p class="tit corto">Actividades interactivas · 6.3</p><ul class="lista-junta"><li><a href="https://actividades.mariancr.es/?t=2bach-quim-t05&amp;id=q2b-t05-22">Ordenar · Estado físico</a></li></ul></div></aside>
 <h2 data-num="6.4" id="s-6-4-catalizadores"><span class="num">6.4</span> Catalizadores</h2>
 <div class="mcr-caja mcr-caja--definicion"><span class="mcr-caja__etiqueta mcr-etiqueta">Definición</span><p class="mcr-caja__termino corto">Catalizador y catálisis</p><p class="corto">Un <strong>catalizador</strong> es una sustancia que, en pequeña cantidad, aumenta la velocidad de una reacción sin consumirse en ella: al final del proceso se recupera sin cambios. La acción del catalizador se llama <strong>catálisis</strong>.</p></div>
 <p class="corto"><strong>Cómo actúa.</strong> El catalizador participa en la reacción y ofrece un <strong>camino alternativo</strong> (un mecanismo distinto) con una <strong>energía de activación menor</strong>. Con una barrera más baja, una fracción mayor de las moléculas tiene energía suficiente, hay más choques eficaces y, según la ecuación de Arrhenius, <i>k</i> aumenta.</p>
+<figure><img alt="Diagrama de energía con y sin catalizador" src="/temas/2bach-quim-t05/img/catalizador.svg" style="width:78mm"/><figcaption>El catalizador baja <i>E</i><sub>a</sub> y <i>E</i>′<sub>a</sub> lo mismo: Δ<i>H</i> no cambia.</figcaption></figure>
+<p class="cadena corto">catalizador → otro mecanismo → ↓ <i>E</i><sub>a</sub> → ↑ <i>k</i> (Arrhenius) → <strong>↑ velocidad</strong></p>
 <p class="corto">Características de los catalizadores:</p>
 <ul>
 <li><strong>No aparecen en la ecuación global</strong>: no son ni reactivos ni productos. Se consumen en una etapa y se regeneran en otra.</li>
@@ -487,14 +517,15 @@ La velocidad se hace <strong>27 veces mayor</strong>. La constante <strong>no ca
 <li>Bajan por igual las barreras de la reacción directa y de la inversa: <strong>aceleran las dos</strong>. Por eso el sistema llega antes al equilibrio, pero el equilibrio final no cambia (tema 6).</li>
 <li>Suelen ser <strong>específicos</strong>: cada catalizador acelera una reacción concreta o un tipo de reacciones.</li>
 </ul>
-<figure><img alt="Diagrama de energía con y sin catalizador" src="/temas/2bach-quim-t05/img/catalizador.svg" style="width:90mm"/><figcaption>El catalizador baja <i>E</i><sub>a</sub> y <i>E</i>′<sub>a</sub> lo mismo: Δ<i>H</i> no cambia.</figcaption></figure>
 <p>Hay sustancias que, en vez de acelerar, frenan las reacciones: son los <strong>inhibidores</strong>, a veces llamados catalizadores negativos. No proporcionan un camino de menor energía; actúan de otra forma, por ejemplo bloqueando los centros activos de un catalizador o capturando intermedios de reacción. Se usan como conservantes en alimentos y como antioxidantes.</p>
+<figure><img alt="Inhibidor que bloquea el centro activo" src="/temas/2bach-quim-t05/img/inhibidor.svg" style="width:100mm"/><figcaption>El inhibidor bloquea el centro activo: menos choques eficaces.</figcaption></figure>
 <p class="corto">Según la fase en que estén el catalizador y los reactivos, la catálisis puede ser:</p>
 <ul>
 <li><strong>Homogénea:</strong> catalizador y reactivos están en la misma fase, normalmente en disolución (el H<sup>+</sup> que cataliza la formación de un éster).</li>
 <li><strong>Heterogénea:</strong> el catalizador está en otra fase, normalmente un sólido sobre cuya superficie reaccionan gases o líquidos. Es la más usada en la industria: el hierro en la síntesis del amoniaco o el platino y el rodio de los catalizadores de los coches.</li>
 <li><strong>Enzimática:</strong> los catalizadores son <strong>enzimas</strong>, proteínas de los seres vivos.</li>
 </ul>
+<figure><img alt="Tipos de catálisis" src="/temas/2bach-quim-t05/img/catalisis.svg" style="width:130mm"/></figure>
 <p>La <strong>catálisis enzimática</strong> se caracteriza por su enorme <strong>eficacia</strong> (las enzimas pueden multiplicar la velocidad de una reacción por 10<sup>6</sup> a 10<sup>12</sup>) y por su <strong>especificidad</strong>: cada enzima actúa sobre un sustrato concreto y cataliza una reacción determinada. Su funcionamiento se explica con el modelo de <strong>llave y cerradura</strong>, propuesto por Fischer en 1894:</p>
 <ul>
 <li><strong>Enzima</strong> (la cerradura): proteína que cataliza una reacción bioquímica.</li>
