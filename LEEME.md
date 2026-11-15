@@ -1,12 +1,10 @@
-# mariancr · web de materias
+# mariancr.es · portada
 
-Web estática (sin compilación) publicada en Vercel desde el repositorio `mariancr-web/mariancr`.
+Portada-recopilatorio de mariancr (web estática en Vercel, repo `mariancr-web/mariancr`).
 
-- `index.html`: portada con los cursos (desplegable de temas) y los recursos.
-- `tema.html`: página de un tema (`/2bach-quimica/t01`). Los PDF se abren en un visor dentro de la web y se leen de **Google Drive**.
-- `libro.html`: libro interactivo (`/2bach-quimica/t01/libro`), con las actividades de mariancr-actividades dentro de cada recuadro.
-- `datos/materias.json`: cursos, temas y el ID de Drive de cada PDF. **Para añadir un tema** se añade aquí su bloque y, si tiene libro, su carpeta en `temas/`.
-- `temas/<tema>/libro.html`: contenido de los apuntes (sale del mismo HTML que el PDF) + `img/` y `estructuras/`.
-- Estilos: hoja común `https://marca.mariancr.es/mariancr.css` + `css/libro.css` (la de los apuntes) + `css/web.css`.
+- `index.html`: una tarjeta por bloque (Clases, Clase en directo, Actividades, Test, Muro, Gestor de clases, Marca, Tutorías).
+- `profe.html` (`/profe`): enlaces a las herramientas de la profe.
+- Estilos: `https://marca.mariancr.es/mariancr.css` + `css/web.css` + `css/portada.css`.
+- `vercel.json`: redirecciones 301 de las rutas antiguas de materias (`/2bach-quimica/*`, `/2bach/*`, `/temas/*`, `/datos/*`…) a **clases.mariancr.es**.
 
-Los PDF de Drive deben estar compartidos como «Cualquier persona con el enlace». Para corregir un PDF, usar «Gestionar versiones» en Drive (el enlace no cambia).
+La web de materias (temas, libros, `datos/materias.json`) está ahora en el repo `mariancr-web/clases` → clases.mariancr.es.

@@ -1,11 +1,105 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/:curso/:tema/libro", "destination": "/libro" },
-    { "source": "/:curso/:tema", "destination": "/tema" }
-  ],
-  "headers": [
-    { "source": "/datos/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }] },
-    { "source": "/temas/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }] }
+  "redirects": [
+    {
+      "source": "/:ruta(1eso-biogeo|2eso-fyq|4eso-fyq|1bach-fyq|2bach-quimica)",
+      "destination": "https://clases.mariancr.es/:ruta",
+      "statusCode": 301
+    },
+    {
+      "source": "/:ruta(1eso-biogeo|2eso-fyq|4eso-fyq|1bach-fyq|2bach-quimica)/:resto*",
+      "destination": "https://clases.mariancr.es/:ruta/:resto*",
+      "statusCode": 301
+    },
+    {
+      "source": "/1eso",
+      "destination": "https://clases.mariancr.es/1eso-biogeo",
+      "statusCode": 301
+    },
+    {
+      "source": "/1eso/:resto*",
+      "destination": "https://clases.mariancr.es/1eso-biogeo/:resto*",
+      "statusCode": 301
+    },
+    {
+      "source": "/2eso",
+      "destination": "https://clases.mariancr.es/2eso-fyq",
+      "statusCode": 301
+    },
+    {
+      "source": "/2eso/:resto*",
+      "destination": "https://clases.mariancr.es/2eso-fyq/:resto*",
+      "statusCode": 301
+    },
+    {
+      "source": "/4eso",
+      "destination": "https://clases.mariancr.es/4eso-fyq",
+      "statusCode": 301
+    },
+    {
+      "source": "/4eso/:resto*",
+      "destination": "https://clases.mariancr.es/4eso-fyq/:resto*",
+      "statusCode": 301
+    },
+    {
+      "source": "/1bach",
+      "destination": "https://clases.mariancr.es/1bach-fyq",
+      "statusCode": 301
+    },
+    {
+      "source": "/1bach/:resto*",
+      "destination": "https://clases.mariancr.es/1bach-fyq/:resto*",
+      "statusCode": 301
+    },
+    {
+      "source": "/2bach",
+      "destination": "https://clases.mariancr.es/2bach-quimica",
+      "statusCode": 301
+    },
+    {
+      "source": "/2bach/:resto*",
+      "destination": "https://clases.mariancr.es/2bach-quimica/:resto*",
+      "statusCode": 301
+    },
+    {
+      "source": "/temas/:resto*",
+      "destination": "https://clases.mariancr.es/temas/:resto*",
+      "statusCode": 301
+    },
+    {
+      "source": "/datos/:resto*",
+      "destination": "https://clases.mariancr.es/datos/:resto*",
+      "statusCode": 301
+    },
+    {
+      "source": "/tema",
+      "destination": "https://clases.mariancr.es/tema",
+      "statusCode": 301
+    },
+    {
+      "source": "/libro",
+      "destination": "https://clases.mariancr.es/libro",
+      "statusCode": 301
+    },
+    {
+      "source": "/tema.html",
+      "destination": "https://clases.mariancr.es/tema.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/libro.html",
+      "destination": "https://clases.mariancr.es/libro.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/css/libro.css",
+      "destination": "https://clases.mariancr.es/css/libro.css",
+      "statusCode": 301
+    },
+    {
+      "source": "/js/:resto*",
+      "destination": "https://clases.mariancr.es/js/:resto*",
+      "statusCode": 301
+    }
   ]
 }

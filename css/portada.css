@@ -1,0 +1,24 @@
+/* mariancr.es · portada-recopilatorio (después de mariancr.css y web.css) */
+.portada{padding-block:24px 40px}
+.bloques{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:12px}
+.bloque{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--papel);border:1px solid var(--borde-web);border-left:5px solid var(--acento);border-radius:6px;color:var(--tinta);text-decoration:none;transition:transform .15s,box-shadow .15s}
+a.bloque:hover{transform:translateY(-2px);box-shadow:0 10px 22px -14px var(--acento)}
+.bloque__txt{display:grid;gap:4px;min-width:0}
+.bloque__txt b{font:700 18px var(--font-marca)}
+.bloque__txt span{color:var(--tinta-suave,#475569);font-size:15px;line-height:1.4}
+.bloque__txt small{font:600 12px var(--font-marca);letter-spacing:.04em;color:var(--gris-web);margin-top:2px}
+.bloque--pronto{border-left-color:var(--linea);background:var(--fondo-grupo)}
+.bloque--pronto b{color:var(--gris-web)}
+.bloque--pronto{flex-direction:column;gap:10px}
+.bloque--pronto .pronto{order:-1}
+.bloque--clases{align-items:center;padding:22px 24px;border-left-width:8px;border-radius:6px 6px 0 0}
+.bloque--clases .bloque__ico{width:56px;height:56px;flex:none}
+.bloque--clases b{font-size:24px}
+.cursos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--borde-web);border-top:0;border-radius:0 0 6px 6px;background:var(--papel);overflow:hidden}
+.curso{display:flex;align-items:center;gap:10px;padding:12px 14px;color:var(--tinta);text-decoration:none;border-top:4px solid var(--acento);font-size:14px;line-height:1.3;transition:background .15s}
+.curso+.curso{border-left:1px solid var(--borde-web)}
+.curso:hover{background:var(--suave)}
+.curso img{width:32px;height:32px;flex:none}
+.curso b{display:block;font:700 16px var(--font-marca);color:var(--texto)}
+@media (max-width:900px){.cursos{grid-template-columns:repeat(2,minmax(0,1fr))}.curso+.curso{border-left:0}.curso:nth-child(even){border-left:1px solid var(--borde-web)}}
+@media (max-width:420px){.cursos{grid-template-columns:1fr}.curso:nth-child(even){border-left:0}}

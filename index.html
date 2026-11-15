@@ -3,28 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Marian CR · Recursos para clase</title>
-<meta name="description" content="Apuntes, resúmenes, ejercicios y actividades de Ciencias: ESO y Bachillerato.">
+<title>mariancr · Ciencias</title>
+<meta name="description" content="Clases, actividades, tests y herramientas de Ciencias para ESO y Bachillerato.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="https://marca.mariancr.es/mariancr.css">
 <link rel="stylesheet" href="/css/web.css">
+<link rel="stylesheet" href="/css/portada.css">
 </head>
 <body class="mcr mcr-app curso-general">
-<header class="mcr-barra"><a class="mcr-barra__marca" href="/"><img src="/img/logo-negativo.svg" alt="mariancr"></a></header>
+<header class="mcr-barra"><a class="mcr-barra__marca" href="/"><img src="/img/logo-negativo.svg" alt="mariancr"></a>
+  <div class="mcr-barra__usuario"><a class="mcr-btn mcr-btn--peq" href="/profe">Acceso profe</a></div></header>
 <section class="mcr-trama-banda"><div class="mcr-contenedor mcr-hero hero-portada">
-       <h1 class="hero-logo"><img src="/img/logo-negativo.svg" alt="Marian CR"></h1>
-       <div class="hero-txt"><div class="ojo">Ciencias · ESO y Bachillerato</div>
-       <p>Todos tus recursos para clase en un solo sitio.</p></div>
-     </div></section>
-<main class="mcr-contenedor" style="padding-bottom:32px">
-  <h2 class="mcr-seccion">Materias</h2>
-  <ul class="indice-cursos" id="cursos"><li class="cargando">Cargando…</li></ul>
-  <h2 class="mcr-seccion">Recursos</h2>
-  <div class="recursos" id="recursos"></div>
+  <h1 class="hero-logo"><img src="/img/logo-negativo.svg" alt="Marian CR"></h1>
+  <div class="hero-txt"><div class="ojo">Ciencias · ESO y Bachillerato</div>
+  <p>Todo lo de clase en un solo sitio: apuntes, actividades, tests y más.</p></div>
+</div></section>
+
+<main class="mcr-contenedor portada">
+  <a class="bloque bloque--clases" href="https://clases.mariancr.es/">
+    <img class="bloque__ico" src="/img/simbolo-general.svg" alt="">
+    <span class="bloque__txt"><b>Clases</b><span>Apuntes, ejercicios, presentaciones y libros interactivos de cada tema.</span><small>clases.mariancr.es</small></span>
+  </a>
+  <nav class="cursos" aria-label="Materias">
+    <a class="curso curso-1eso" href="https://clases.mariancr.es/1eso-biogeo"><img src="/img/simbolo-1eso.svg" alt=""><span><b>1.º ESO</b>Biología y Geología</span></a>
+    <a class="curso curso-2eso" href="https://clases.mariancr.es/2eso-fyq"><img src="/img/simbolo-2eso.svg" alt=""><span><b>2.º ESO</b>Física y Química</span></a>
+    <a class="curso curso-4eso" href="https://clases.mariancr.es/4eso-fyq"><img src="/img/simbolo-4eso.svg" alt=""><span><b>4.º ESO</b>Física y Química</span></a>
+    <a class="curso curso-1bach" href="https://clases.mariancr.es/1bach-fyq"><img src="/img/simbolo-1bach.svg" alt=""><span><b>1.º Bach</b>Física y Química</span></a>
+    <a class="curso curso-2bach" href="https://clases.mariancr.es/2bach-quimica"><img src="/img/simbolo-2bach.svg" alt=""><span><b>2.º Bach</b>Química</span></a>
+  </nav>
+
+  <h2 class="mcr-seccion">En clase</h2>
+  <div class="bloques">
+    <a class="bloque" href="https://directo.mariancr.es/"><span class="bloque__txt"><b>Clase en directo</b><span>Sigue la presentación y responde desde tu móvil.</span><small>directo.mariancr.es</small></span></a>
+    <a class="bloque" href="https://actividades.mariancr.es/"><span class="bloque__txt"><b>Actividades</b><span>Actividades interactivas de cada tema.</span><small>actividades.mariancr.es</small></span></a>
+    <a class="bloque" href="https://test.mariancr.es/"><span class="bloque__txt"><b>Test</b><span>Exámenes tipo test y repaso.</span><small>test.mariancr.es</small></span></a>
+    <a class="bloque" href="https://muro.mariancr.es/"><span class="bloque__txt"><b>Muro</b><span>Ideas, dudas y trabajos de la clase.</span><small>muro.mariancr.es</small></span></a>
+  </div>
+
+  <h2 class="mcr-seccion">Más</h2>
+  <div class="bloques">
+    <div class="bloque bloque--pronto"><span class="bloque__txt"><b>Gestor de clases</b><span>Tareas y materiales de Classroom.</span></span><span class="pronto">Próximamente</span></div>
+    <a class="bloque" href="https://marca.mariancr.es/"><span class="bloque__txt"><b>Marca</b><span>Logotipos, colores y plantillas de mariancr.</span><small>marca.mariancr.es</small></span></a>
+    <div class="bloque bloque--pronto"><span class="bloque__txt"><b>Tutorías</b><span>Información y citas con las familias.</span></span><span class="pronto">Próximamente</span></div>
+  </div>
 </main>
-<footer class="mcr-pie-app">mariancr · Recursos para clase</footer>
-<script type="module" src="/js/portada.js"></script>
+<footer class="mcr-pie-app">mariancr · Ciencias</footer>
 </body>
 </html>
