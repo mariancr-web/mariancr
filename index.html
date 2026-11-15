@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>mariancr · Ciencias</title>
 <meta name="description" content="Clases, actividades, tests y herramientas de Ciencias para ESO y Bachillerato.">
+<meta name="theme-color" content="#1E293B">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -14,40 +15,37 @@
 </head>
 <body class="mcr mcr-app curso-general">
 <header class="mcr-barra"><a class="mcr-barra__marca" href="/"><img src="/img/logo-negativo.svg" alt="mariancr"></a>
-  <div class="mcr-barra__usuario"><a class="mcr-btn mcr-btn--peq" href="/profe">Acceso profe</a></div></header>
-<section class="mcr-trama-banda"><div class="mcr-contenedor mcr-hero hero-portada">
-  <h1 class="hero-logo"><img src="/img/logo-negativo.svg" alt="Marian CR"></h1>
-  <div class="hero-txt"><div class="ojo">Ciencias · ESO y Bachillerato</div>
-  <p>Todo lo de clase en un solo sitio: apuntes, actividades, tests y más.</p></div>
+  <div class="mcr-barra__usuario"><a class="mcr-btn mcr-btn--peq" href="/profe"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Acceso profe</a></div></header>
+
+<section class="mcr-trama-banda heroe"><div class="mcr-contenedor heroe__in">
+  <div class="heroe__txt">
+    <div class="ojo">Ciencias · ESO y Bachillerato</div>
+    <h1>Aprende ciencia<br>a tu ritmo</h1>
+    <p>Apuntes, libros interactivos, actividades, tests y la clase en directo. Todo lo de clase en un solo sitio.</p>
+    <div class="heroe__acc"><a class="mcr-btn mcr-btn--prim" href="https://clases.mariancr.es/">Ir a Clases <svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="mcr-btn" href="https://directo.mariancr.es/">Clase en directo</a></div>
+  </div>
+  <svg class="heroe__atomo" viewBox="0 0 200 200" aria-hidden="true">
+    <ellipse class="o o1" cx="100" cy="100" rx="88" ry="32"/><ellipse class="o o2" cx="100" cy="100" rx="88" ry="32" transform="rotate(60 100 100)"/><ellipse class="o o3" cx="100" cy="100" rx="88" ry="32" transform="rotate(120 100 100)"/>
+    <circle class="n" cx="100" cy="100" r="13"/>
+    <g transform="rotate(0 100 100)"><circle class="e e1" r="6"><animateMotion dur="6s" repeatCount="indefinite" path="M12,100 a88,32 0 1,0 176,0 a88,32 0 1,0 -176,0"/></circle></g><g transform="rotate(60 100 100)"><circle class="e e2" r="6"><animateMotion dur="8s" repeatCount="indefinite" path="M12,100 a88,32 0 1,0 176,0 a88,32 0 1,0 -176,0"/></circle></g><g transform="rotate(120 100 100)"><circle class="e e3" r="6"><animateMotion dur="7s" repeatCount="indefinite" path="M12,100 a88,32 0 1,0 176,0 a88,32 0 1,0 -176,0"/></circle></g>
+  </svg>
 </div></section>
 
 <main class="mcr-contenedor portada">
-  <a class="bloque bloque--clases" href="https://clases.mariancr.es/">
-    <img class="bloque__ico" src="/img/simbolo-general.svg" alt="">
-    <span class="bloque__txt"><b>Clases</b><span>Apuntes, ejercicios, presentaciones y libros interactivos de cada tema.</span><small>clases.mariancr.es</small></span>
-  </a>
-  <nav class="cursos" aria-label="Materias">
-    <a class="curso curso-1eso" href="https://clases.mariancr.es/1eso-biogeo"><img src="/img/simbolo-1eso.svg" alt=""><span><b>1.º ESO</b>Biología y Geología</span></a>
-    <a class="curso curso-2eso" href="https://clases.mariancr.es/2eso-fyq"><img src="/img/simbolo-2eso.svg" alt=""><span><b>2.º ESO</b>Física y Química</span></a>
-    <a class="curso curso-4eso" href="https://clases.mariancr.es/4eso-fyq"><img src="/img/simbolo-4eso.svg" alt=""><span><b>4.º ESO</b>Física y Química</span></a>
-    <a class="curso curso-1bach" href="https://clases.mariancr.es/1bach-fyq"><img src="/img/simbolo-1bach.svg" alt=""><span><b>1.º Bach</b>Física y Química</span></a>
-    <a class="curso curso-2bach" href="https://clases.mariancr.es/2bach-quimica"><img src="/img/simbolo-2bach.svg" alt=""><span><b>2.º Bach</b>Química</span></a>
-  </nav>
+  <section class="clases" aria-labelledby="t-clases">
+    <div class="clases__cab">
+      <span class="tool__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M8 7h8M8 11h6"/></svg></span>
+      <div><h2 id="t-clases">Clases</h2><p>Apuntes, ejercicios, presentaciones y libros interactivos de cada tema.</p></div>
+      <a class="clases__todo" href="https://clases.mariancr.es/">clases.mariancr.es <svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <nav class="cursos" aria-label="Elige tu curso"><a class="curso curso-1eso" href="https://clases.mariancr.es/1eso-biogeo"><img src="/img/simbolo-1eso.svg" alt=""><span class="curso__n">1.º ESO</span><span class="curso__m">Biología y Geología</span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="curso curso-2eso" href="https://clases.mariancr.es/2eso-fyq"><img src="/img/simbolo-2eso.svg" alt=""><span class="curso__n">2.º ESO</span><span class="curso__m">Física y Química</span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="curso curso-4eso" href="https://clases.mariancr.es/4eso-fyq"><img src="/img/simbolo-4eso.svg" alt=""><span class="curso__n">4.º ESO</span><span class="curso__m">Física y Química</span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="curso curso-1bach" href="https://clases.mariancr.es/1bach-fyq"><img src="/img/simbolo-1bach.svg" alt=""><span class="curso__n">1.º Bach</span><span class="curso__m">Física y Química</span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="curso curso-2bach" href="https://clases.mariancr.es/2bach-quimica"><img src="/img/simbolo-2bach.svg" alt=""><span class="curso__n">2.º Bach</span><span class="curso__m">Química</span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></nav>
+  </section>
 
   <h2 class="mcr-seccion">En clase</h2>
-  <div class="bloques">
-    <a class="bloque" href="https://directo.mariancr.es/"><span class="bloque__txt"><b>Clase en directo</b><span>Sigue la presentación y responde desde tu móvil.</span><small>directo.mariancr.es</small></span></a>
-    <a class="bloque" href="https://actividades.mariancr.es/"><span class="bloque__txt"><b>Actividades</b><span>Actividades interactivas de cada tema.</span><small>actividades.mariancr.es</small></span></a>
-    <a class="bloque" href="https://test.mariancr.es/"><span class="bloque__txt"><b>Test</b><span>Exámenes tipo test y repaso.</span><small>test.mariancr.es</small></span></a>
-    <a class="bloque" href="https://muro.mariancr.es/"><span class="bloque__txt"><b>Muro</b><span>Ideas, dudas y trabajos de la clase.</span><small>muro.mariancr.es</small></span></a>
-  </div>
+  <div class="tools"><a class="tool curso-general" href="https://directo.mariancr.es/"><span class="tool__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10.5" r="2.5"/><path d="M7 7.5a6 6 0 0 0 0 6M17 7.5a6 6 0 0 1 0 6"/></svg></span><span class="tool__txt"><b>Clase en directo</b><span>Sigue la presentación y responde desde tu móvil.</span><small>directo.mariancr.es</small></span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="tool curso-1eso" href="https://actividades.mariancr.es/"><span class="tool__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></span><span class="tool__txt"><b>Actividades</b><span>Actividades interactivas para practicar cada tema.</span><small>actividades.mariancr.es</small></span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="tool curso-4eso" href="https://test.mariancr.es/"><span class="tool__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m8 8 1.5 1.5L12 7M8 14l1.5 1.5L12 13M14.5 8.5H17M14.5 14.5H17"/></svg></span><span class="tool__txt"><b>Test</b><span>Exámenes tipo test para repasar y evaluar.</span><small>test.mariancr.es</small></span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="tool curso-2eso" href="https://muro.mariancr.es/"><span class="tool__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg></span><span class="tool__txt"><b>Muro</b><span>Ideas, dudas y trabajos de toda la clase.</span><small>muro.mariancr.es</small></span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 
   <h2 class="mcr-seccion">Más</h2>
-  <div class="bloques">
-    <div class="bloque bloque--pronto"><span class="bloque__txt"><b>Gestor de clases</b><span>Tareas y materiales de Classroom.</span></span><span class="pronto">Próximamente</span></div>
-    <a class="bloque" href="https://marca.mariancr.es/"><span class="bloque__txt"><b>Marca</b><span>Logotipos, colores y plantillas de mariancr.</span><small>marca.mariancr.es</small></span></a>
-    <div class="bloque bloque--pronto"><span class="bloque__txt"><b>Tutorías</b><span>Información y citas con las familias.</span></span><span class="pronto">Próximamente</span></div>
-  </div>
+  <div class="tools"><div class="tool tool--pronto"><span class="tool__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7 13h4M7 17h7"/></svg></span><span class="tool__txt"><b>Gestor de clases</b><span>Tareas y materiales de Classroom.</span><small class="pronto">Próximamente</small></span></div><a class="tool curso-2bach" href="https://marca.mariancr.es/"><span class="tool__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 0 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.3A5.5 5.5 0 0 0 22 10c0-4.4-4.5-8-10-8z"/></svg></span><span class="tool__txt"><b>Marca</b><span>Logotipos, colores y plantillas de mariancr.</span><small>marca.mariancr.es</small></span><svg class="flecha-ir" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><div class="tool tool--pronto"><span class="tool__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></span><span class="tool__txt"><b>Tutorías</b><span>Información y citas con las familias.</span><small class="pronto">Próximamente</small></span></div></div>
 </main>
 <footer class="mcr-pie-app">mariancr · Ciencias</footer>
 </body>
